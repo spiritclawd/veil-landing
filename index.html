@@ -1,0 +1,1042 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Veil — Every Asset. Yours.</title>
+  <link rel="icon" href="/favicon.ico"/>
+  <meta name="description" content="Privacy infrastructure for institutional assets. Quantum-resistant. Self-custodial. Impossible to break."/>
+  <meta property="og:title" content="Veil"/>
+  <meta property="og:description" content="Every asset. Yours and sovereign."/>
+  <meta name="twitter:card" content="summary_large_image"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    /* ── THEMES ── */
+    [data-theme="dark"] {
+      --bg:        #07080f;
+      --bg2:       #0d0f1c;
+      --bg3:       #13162a;
+      --fg:        #e2e4ec;
+      --fg2:       #8c91a8;
+      --fg3:       #4a5068;
+      --border:    rgba(255,255,255,0.06);
+      --border2:   rgba(255,255,255,0.1);
+      --indigo:    #4f52c8;
+      --indigo2:   #7b7fde;
+      --indigo-bg: rgba(79,82,200,0.08);
+      --teal:      #2ec4b6;
+      --card-bg:   #0d0f1c;
+      --nav-bg:    rgba(7,8,15,0.88);
+    }
+
+    [data-theme="light"] {
+      --bg:        #f4f5fa;
+      --bg2:       #ecedf5;
+      --bg3:       #e3e4f0;
+      --fg:        #0d0f1c;
+      --fg2:       #4a5068;
+      --fg3:       #8c91a8;
+      --border:    rgba(0,0,0,0.07);
+      --border2:   rgba(0,0,0,0.12);
+      --indigo:    #4f52c8;
+      --indigo2:   #3b3ea8;
+      --indigo-bg: rgba(79,82,200,0.06);
+      --teal:      #1a9e92;
+      --card-bg:   #ecedf5;
+      --nav-bg:    rgba(244,245,250,0.92);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--fg);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 56px; height: 64px;
+      background: var(--nav-bg);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 18px; font-weight: 600;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--fg);
+      display: flex; align-items: center; gap: 9px;
+    }
+
+    .nav-logo svg {
+      flex-shrink: 0;
+      filter: drop-shadow(0 1px 2px rgba(79,82,200,0.4));
+    }
+
+    .nav-right {
+      display: flex; align-items: center; gap: 36px;
+    }
+
+    .nav-links {
+      display: flex; gap: 32px;
+      font-size: 13px; color: var(--fg2);
+    }
+    .nav-links a { transition: color 0.2s; }
+    .nav-links a:hover { color: var(--fg); }
+
+    #theme-toggle {
+      background: none; border: none; cursor: pointer;
+      color: var(--fg2); display: flex; align-items: center;
+      opacity: 0.7; transition: opacity 0.2s; padding: 4px;
+    }
+    #theme-toggle:hover { opacity: 1; }
+
+    .nav-cta {
+      font-size: 13px; font-weight: 500;
+      padding: 8px 22px;
+      border: 1px solid var(--indigo2);
+      color: var(--indigo2);
+      border-radius: 4px;
+      letter-spacing: 0.04em;
+      transition: all 0.2s;
+    }
+    .nav-cta:hover {
+      background: var(--indigo);
+      border-color: var(--indigo);
+      color: #fff;
+    }
+
+    /* ── TRUST STRIP ── */
+    .trust-strip {
+      margin-top: 28px;
+      display: flex; align-items: center; gap: 0;
+      font-size: 11px; font-weight: 500;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--fg3);
+    }
+
+    .trust-strip span {
+      padding: 0 14px;
+      border-left: 1px solid var(--border2);
+    }
+
+    .trust-strip span:first-child { padding-left: 0; border-left: none; }
+
+    /* ── WHY VEIL ── */
+    .why-grid {
+      margin-top: 56px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--indigo);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .why-card {
+      background: var(--card-bg);
+      padding: 40px 36px;
+      border-top: 2px solid var(--indigo);
+      transition: background 0.25s;
+    }
+
+    .why-card:hover { background: var(--bg3); }
+
+    .why-card-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 16px; font-weight: 500;
+      color: var(--fg); margin-bottom: 14px;
+      letter-spacing: 0.01em;
+    }
+
+    .why-card-body {
+      font-size: 14px; font-weight: 300;
+      color: var(--fg2); line-height: 1.85;
+    }
+
+    @media (max-width: 900px) {
+      .why-grid { grid-template-columns: 1fr; }
+      .trust-strip { flex-wrap: wrap; gap: 8px; }
+      .trust-strip span { border-left: none; padding-left: 0; }
+      .trust-strip span::before { content: '· '; color: var(--fg3); }
+      .trust-strip span:first-child::before { content: ''; }
+    }
+
+    /* ── HERO ── */
+    #hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex; flex-direction: column;
+      justify-content: center;
+      padding: 140px 56px 100px;
+      max-width: 1200px; margin: 0 auto;
+      overflow: hidden;
+    }
+
+    /* Subtle geometric background */
+    #hero-canvas {
+      position: absolute;
+      right: -80px; top: 50%;
+      transform: translateY(-50%);
+      width: 500px; height: 500px;
+      opacity: 0.25;
+      pointer-events: none;
+    }
+
+    .hero-tag {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-size: 11px; font-weight: 500;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--fg3); margin-bottom: 40px;
+    }
+
+    .hero-tag-dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--teal);
+      box-shadow: 0 0 8px var(--teal);
+    }
+
+    .hero-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(48px, 6vw, 86px);
+      font-weight: 300; line-height: 1.08;
+      letter-spacing: -0.025em;
+      color: var(--fg);
+      max-width: 780px;
+    }
+
+    .hero-title .line2 {
+      display: flex; align-items: baseline; gap: 0.22em; flex-wrap: wrap;
+    }
+
+    .yours { color: var(--fg); }
+
+    .hidden-word {
+      position: relative;
+      color: var(--indigo2);
+      white-space: nowrap;
+      display: inline-block;
+      min-width: 5ch;
+    }
+
+    /* The veil effect — word fades through a redacted state */
+    .hidden-word .veil {
+      position: absolute;
+      left: 0; top: 12%;
+      width: 100%; height: 76%;
+      background: var(--indigo);
+      border-radius: 2px;
+      transform: scaleX(0);
+      transform-origin: left;
+    }
+
+    .hidden-word.veiling .veil {
+      animation: veil-in 0.3s forwards;
+    }
+    .hidden-word.unveiling .veil {
+      animation: veil-out 0.3s forwards;
+    }
+
+    @keyframes veil-in {
+      from { transform: scaleX(0); transform-origin: left; }
+      to   { transform: scaleX(1); transform-origin: left; }
+    }
+
+    @keyframes veil-out {
+      from { transform: scaleX(1); transform-origin: right; }
+      to   { transform: scaleX(0); transform-origin: right; }
+    }
+
+    .hero-sub {
+      margin-top: 36px;
+      font-size: 17px; font-weight: 300;
+      color: var(--fg2); line-height: 1.85;
+      max-width: 500px;
+    }
+
+    .hero-properties {
+      margin-top: 48px;
+      display: flex; flex-wrap: wrap; gap: 10px;
+    }
+
+    .property {
+      display: inline-flex; align-items: center; gap: 7px;
+      font-size: 12px; font-weight: 500;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--fg2);
+      padding: 7px 14px;
+      border: 1px solid var(--border2);
+      border-radius: 3px;
+      background: var(--indigo-bg);
+    }
+
+    .property-dot {
+      width: 5px; height: 5px; border-radius: 50%;
+      background: var(--teal);
+    }
+
+    .hero-actions {
+      margin-top: 48px;
+      display: flex; gap: 14px; align-items: center; flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      padding: 13px 32px;
+      background: var(--indigo);
+      color: #fff;
+      font-size: 13px; font-weight: 500;
+      letter-spacing: 0.06em;
+      border-radius: 4px;
+      transition: all 0.2s;
+    }
+    .btn-primary:hover {
+      background: var(--indigo2);
+      transform: translateY(-1px);
+      box-shadow: 0 8px 24px rgba(79,82,200,0.25);
+    }
+
+    .btn-ghost {
+      padding: 13px 32px;
+      border: 1px solid var(--border2);
+      color: var(--fg2);
+      font-size: 13px; font-weight: 400;
+      border-radius: 4px;
+      transition: all 0.2s;
+    }
+    .btn-ghost:hover { border-color: var(--indigo2); color: var(--indigo2); }
+
+    /* ── DIVIDER ── */
+    .divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 0;
+    }
+
+    /* ── SECTION ── */
+    .section {
+      max-width: 1100px; margin: 0 auto;
+      padding: 100px 56px;
+    }
+
+    .label {
+      font-size: 10px; font-weight: 600;
+      letter-spacing: 0.24em; text-transform: uppercase;
+      color: var(--fg3); margin-bottom: 28px;
+    }
+
+    .title-lg {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(28px, 3vw, 46px);
+      font-weight: 300; line-height: 1.2;
+      letter-spacing: -0.015em;
+      color: var(--fg); max-width: 640px;
+    }
+
+    .title-lg .acc { color: var(--indigo2); }
+
+    /* ── PILLARS ── */
+    .pillars {
+      margin-top: 64px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 8px; overflow: hidden;
+    }
+
+    .pillar {
+      background: var(--card-bg);
+      padding: 40px 32px;
+      transition: background 0.25s;
+    }
+
+    .pillar:hover { background: var(--bg3); }
+
+    .pillar-icon {
+      width: 36px; height: 36px;
+      display: flex; align-items: center; justify-content: center;
+      border: 1px solid var(--border2);
+      border-radius: 6px;
+      margin-bottom: 20px;
+      color: var(--indigo2); font-size: 16px;
+    }
+
+    .pillar-title {
+      font-size: 14px; font-weight: 600;
+      color: var(--fg); margin-bottom: 10px;
+      letter-spacing: 0.01em;
+    }
+
+    .pillar-desc {
+      font-size: 13px; font-weight: 300;
+      color: var(--fg2); line-height: 1.8;
+    }
+
+    /* ── PROPERTIES DEEP DIVE ── */
+    .props-grid {
+      margin-top: 64px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 8px; overflow: hidden;
+    }
+
+    .prop-card {
+      background: var(--card-bg);
+      padding: 48px 44px;
+    }
+
+    .prop-num {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 11px; font-weight: 600;
+      letter-spacing: 0.18em; color: var(--indigo2);
+      margin-bottom: 20px;
+    }
+
+    .prop-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 22px; font-weight: 400;
+      color: var(--fg); margin-bottom: 14px; line-height: 1.2;
+    }
+
+    .prop-desc {
+      font-size: 14px; font-weight: 300;
+      color: var(--fg2); line-height: 1.9;
+    }
+
+    .prop-stat {
+      margin-top: 28px; padding-top: 24px;
+      border-top: 1px solid var(--border);
+      display: flex; align-items: baseline; gap: 10px;
+    }
+
+    .prop-stat-val {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 32px; font-weight: 300;
+      color: var(--fg);
+    }
+
+    .prop-stat-val span { color: var(--teal); }
+
+    .prop-stat-label {
+      font-size: 12px; color: var(--fg3);
+      letter-spacing: 0.04em;
+    }
+
+    /* ── SECURITY BLOCK ── */
+    .security-block {
+      margin-top: 2px;
+      background: var(--card-bg);
+      border-top: 1px solid var(--border);
+      padding: 48px 44px;
+      grid-column: span 2;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 40px;
+      align-items: start;
+    }
+
+    .security-item {
+      display: flex; flex-direction: column; gap: 8px;
+    }
+
+    .security-label {
+      font-size: 10px; font-weight: 600;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--fg3);
+    }
+
+    .security-value {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 15px; font-weight: 500;
+      color: var(--fg);
+    }
+
+    .security-desc {
+      font-size: 13px; font-weight: 300;
+      color: var(--fg2); line-height: 1.7; margin-top: 4px;
+    }
+
+    /* ── COMPARE ── */
+    .compare-table {
+      margin-top: 56px;
+      width: 100%;
+      border-collapse: collapse;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+      font-size: 13px;
+    }
+
+    .compare-table th {
+      padding: 14px 22px;
+      font-size: 10px; font-weight: 600;
+      letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--fg3);
+      background: var(--card-bg);
+      border-bottom: 1px solid var(--border);
+      text-align: left;
+    }
+
+    .compare-table th.us { color: var(--indigo2); }
+
+    .compare-table td {
+      padding: 14px 22px;
+      font-weight: 300;
+      color: var(--fg2);
+      border-bottom: 1px solid var(--border);
+      background: var(--bg);
+    }
+
+    .compare-table tr:last-child td { border-bottom: none; }
+    .compare-table td:first-child { font-weight: 500; color: var(--fg); }
+    .compare-table td.us { background: var(--indigo-bg); }
+
+    .check { color: var(--teal); }
+    .cross { color: var(--fg3); }
+    .partial { color: #c49a2a; font-size: 11px; }
+
+    /* ── QUOTE ── */
+    .quote-wrap {
+      padding: 100px 56px;
+      text-align: center;
+    }
+
+    .quote-text {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(20px, 2.5vw, 34px);
+      font-weight: 300; line-height: 1.6;
+      color: var(--fg2); max-width: 760px; margin: 0 auto;
+    }
+
+    .quote-text strong { color: var(--fg); font-weight: 500; }
+    .quote-text .acc { color: var(--indigo2); }
+
+    .quote-source {
+      margin-top: 28px; font-size: 12px;
+      letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--fg3);
+    }
+
+    /* ── CTA ── */
+    #cta { text-align: center; }
+
+    .cta-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(32px, 4vw, 58px);
+      font-weight: 300; line-height: 1.1;
+      letter-spacing: -0.02em; color: var(--fg);
+    }
+
+    .cta-title .acc { color: var(--indigo2); }
+
+    .cta-sub {
+      margin-top: 18px;
+      font-size: 16px; font-weight: 300;
+      color: var(--fg2); line-height: 1.8;
+    }
+
+    .cta-actions {
+      margin-top: 44px;
+      display: flex; gap: 14px;
+      justify-content: center; flex-wrap: wrap;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 28px 56px;
+      display: flex; align-items: center; justify-content: space-between;
+      font-size: 12px; color: var(--fg3);
+    }
+
+    .footer-logo {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 13px; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--fg2);
+    }
+
+    .footer-links { display: flex; gap: 24px; }
+    .footer-links a:hover { color: var(--fg); }
+
+    /* ── REVEAL ── */
+    .reveal {
+      opacity: 0; transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      nav { padding: 0 24px; }
+      .nav-links { display: none; }
+      #hero { padding: 120px 24px 80px; }
+      #hero-canvas { display: none; }
+      .section { padding: 72px 24px; }
+      .divider { margin: 0; }
+      .pillars { grid-template-columns: 1fr 1fr; }
+      .props-grid { grid-template-columns: 1fr; }
+      .security-block { grid-column: span 1; grid-template-columns: 1fr; }
+      footer { flex-direction: column; gap: 12px; text-align: center; padding: 24px; }
+      .quote-wrap { padding: 72px 24px; }
+    }
+
+    @media (max-width: 560px) {
+      .pillars { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <svg width="28" height="22" viewBox="0 0 28 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0 0 L10 22 L14 14 L18 22 L28 0 L23 0 L14 16 L5 0 Z" fill="currentColor"/>
+    </svg>
+    <span>VEIL</span>
+  </div>
+  <div class="nav-right">
+    <div class="nav-links">
+      <a href="#properties">Properties</a>
+      <a href="#compare">Compare</a>
+      <a href="https://rufidocs.aircade.xyz/docs/veil/intro">Docs</a>
+    </div>
+    <button id="theme-toggle" aria-label="Toggle theme">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
+    <a href="mailto:hello@rufi.aircade.xyz?subject=Veil — Institutional Inquiry" class="nav-cta">Request Access</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <canvas id="hero-canvas"></canvas>
+
+  <div class="hero-tag">
+    <span class="hero-tag-dot"></span>
+    Privacy Infrastructure · STARKs
+  </div>
+
+  <h1 class="hero-title">
+    Every asset.<br>
+    <span class="line2">
+      <span class="yours">Yours</span>&nbsp;and&nbsp;<span class="hidden-word" id="hidden-word">sovereign<span class="veil"></span></span>.
+    </span>
+  </h1>
+
+  <p class="hero-sub">
+    Privacy and compliance infrastructure for institutional assets. Quantum-resistant. Self-custodial. Built to be impossible to break.
+  </p>
+
+  <div class="hero-properties">
+    <span class="property"><span class="property-dot"></span>Quantum-Resistant</span>
+    <span class="property"><span class="property-dot"></span>Self-Custodial</span>
+    <span class="property"><span class="property-dot"></span>Sub-5s Proofs</span>
+    <span class="property"><span class="property-dot"></span>Selective Disclosure</span>
+  </div>
+
+  <div class="hero-actions">
+    <a href="mailto:hello@rufi.aircade.xyz?subject=Veil — Institutional Inquiry" class="btn-primary">Request Early Access</a>
+    <a href="https://rufidocs.aircade.xyz/docs/veil/intro" class="btn-ghost">Read the Docs →</a>
+  </div>
+
+  <div class="trust-strip">
+    <span>Built on Starknet</span>
+    <span>STWO Proofs</span>
+    <span>Sub-5s</span>
+    <span>Post-Quantum</span>
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<!-- PILLARS -->
+<section class="section reveal">
+  <div class="label">Why Veil</div>
+  <h2 class="title-lg">The infrastructure<br>institutions have been waiting for.</h2>
+
+  <div class="pillars">
+    <div class="pillar">
+      <div class="pillar-icon">⬡</div>
+      <div class="pillar-title">Quantum-Resistant</div>
+      <p class="pillar-desc">Built on post-quantum cryptographic primitives. Designed to withstand the next generation of computational attacks — today.</p>
+    </div>
+    <div class="pillar">
+      <div class="pillar-icon">⊕</div>
+      <div class="pillar-title">Self-Custodial</div>
+      <p class="pillar-desc">You hold your keys. No trusted third party. No custodian with access to your assets. Sovereignty by design, not by policy.</p>
+    </div>
+    <div class="pillar">
+      <div class="pillar-icon">◈</div>
+      <div class="pillar-title">Cheap & Fast</div>
+      <p class="pillar-desc">Sub-5 second proof generation. Near-zero gas costs on Starknet. Privacy that doesn't tax your operations or slow your execution.</p>
+    </div>
+    <div class="pillar">
+      <div class="pillar-icon">◎</div>
+      <div class="pillar-title">Compliant</div>
+      <p class="pillar-desc">Selective disclosure via encrypted viewing keys. Prove ownership to regulators and auditors — without public exposure. Privacy and compliance are not opposites.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<!-- PROPERTIES -->
+<section id="properties" class="section">
+  <div class="label">How it works</div>
+  <h2 class="title-lg reveal">Transfer anything.<br>Prove what matters.<br><span class="acc">Expose nothing else.</span></h2>
+
+  <div class="props-grid" style="margin-top:64px;">
+    <div class="prop-card reveal">
+      <div class="prop-num">01 — HIDE</div>
+      <div class="prop-title">Invisible by default</div>
+      <p class="prop-desc">Asset, sender, and receiver are concealed from public view at the protocol level. The transfer executes on-chain. No observer can determine what moved, from whom, or to whom.</p>
+      <div class="prop-stat">
+        <div class="prop-stat-val">0<span>x</span></div>
+        <div class="prop-stat-label">Publicly visible data to third parties</div>
+      </div>
+    </div>
+
+    <div class="prop-card reveal">
+      <div class="prop-num">02 — PROVE</div>
+      <div class="prop-title">Provable on demand</div>
+      <p class="prop-desc">Cryptographic proofs allow ownership and compliance to be demonstrated to any authorized party — auditor, regulator, counterparty — without revealing anything beyond what is required.</p>
+      <div class="prop-stat">
+        <div class="prop-stat-val">&lt;5<span>s</span></div>
+        <div class="prop-stat-label">Proof generation time</div>
+      </div>
+    </div>
+
+    <div class="security-block reveal">
+      <div class="security-item">
+        <div class="security-label">Cryptographic Foundation</div>
+        <div class="security-value">STWO / Post-Quantum</div>
+        <p class="security-desc">Native to Starknet's STWO proving system. Not a retrofit. Built from the ground up for NFTs and real-world assets.</p>
+      </div>
+      <div class="security-item">
+        <div class="security-label">Custody Model</div>
+        <div class="security-value">Non-Custodial</div>
+        <p class="security-desc">Keys never leave your control. No multisig with third parties. No counterparty risk in the custody layer.</p>
+      </div>
+      <div class="security-item">
+        <div class="security-label">Attack Surface</div>
+        <div class="security-value">Mathematically Bounded</div>
+        <p class="security-desc">Security guarantees derive from mathematical hardness assumptions — not from operational trust or policy. Impossible to break without breaking the math.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<!-- WHY VEIL -->
+<section class="section reveal">
+  <div class="label">Why Veil</div>
+  <h2 class="title-lg">Infrastructure-grade.<br><span class="acc">No compromises.</span></h2>
+
+  <div class="why-grid">
+    <div class="why-card">
+      <div class="why-card-title">Built for Institutions</div>
+      <p class="why-card-body">Encrypted viewing keys let auditors verify without exposing positions. Selective disclosure by design, not by workaround.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-card-title">Sub-5 Second Proofs</div>
+      <p class="why-card-body">STWO prover generates ZK proofs fast enough for real-world UX. Mobile-ready by late 2026.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-card-title">Self-Custodial by Default</div>
+      <p class="why-card-body">No trusted third party. No backdoors. Your keys, your assets, your proofs.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<!-- COMPARE -->
+<section id="compare" class="section reveal">
+  <div class="label">Landscape</div>
+  <h2 class="title-lg">The only solution<br>that does <span class="acc">all of it.</span></h2>
+
+  <table class="compare-table">
+    <thead>
+      <tr>
+        <th>Capability</th>
+        <th class="us">Veil</th>
+        <th>STRK20</th>
+        <th>Aztec</th>
+        <th>Railgun</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Private NFTs / RWAs</td>
+        <td class="us"><span class="check">✓</span></td>
+        <td><span class="cross">✗</span></td>
+        <td><span class="cross">✗</span></td>
+        <td><span class="cross">✗</span></td>
+      </tr>
+      <tr>
+        <td>Selective Compliance Disclosure</td>
+        <td class="us"><span class="check">✓</span></td>
+        <td><span class="check">✓</span></td>
+        <td><span class="cross">✗</span></td>
+        <td><span class="cross">✗</span></td>
+      </tr>
+      <tr>
+        <td>Sub-5s Proof Generation</td>
+        <td class="us"><span class="check">✓</span></td>
+        <td><span class="check">✓</span></td>
+        <td><span class="cross">✗</span></td>
+        <td><span class="partial">Partial</span></td>
+      </tr>
+      <tr>
+        <td>Quantum-Resistant</td>
+        <td class="us"><span class="check">✓</span></td>
+        <td><span class="cross">✗</span></td>
+        <td><span class="cross">✗</span></td>
+        <td><span class="cross">✗</span></td>
+      </tr>
+      <tr>
+        <td>Self-Custodial</td>
+        <td class="us"><span class="check">✓</span></td>
+        <td><span class="check">✓</span></td>
+        <td><span class="partial">Partial</span></td>
+        <td><span class="check">✓</span></td>
+      </tr>
+      <tr>
+        <td>Native to NFTs (not retrofitted)</td>
+        <td class="us"><span class="check">✓</span></td>
+        <td><span class="cross">✗</span></td>
+        <td><span class="cross">✗</span></td>
+        <td><span class="cross">✗</span></td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- QUOTE -->
+<div class="quote-wrap reveal">
+  <p class="quote-text">
+    "Institutions won't adopt public ledgers at scale<br>until privacy is <strong>provable</strong>, compliance is <span class="acc">selective</span>,<br>and custody is truly <strong>theirs</strong>."
+  </p>
+  <div class="quote-source">— Veil Thesis, 2026</div>
+</div>
+
+<hr class="divider"/>
+
+<!-- CTA -->
+<section id="cta" class="section reveal">
+  <h2 class="cta-title">Every asset.<br><span class="acc">Yours and sovereign.</span></h2>
+  <p class="cta-sub">Veil is in active development. Early access for institutional partners and protocols.</p>
+  <div class="cta-actions">
+    <a href="mailto:hello@rufi.aircade.xyz?subject=Veil — Institutional Inquiry" class="btn-primary">Request Early Access</a>
+    <a href="https://rufidocs.aircade.xyz/docs/veil/intro" class="btn-ghost">Technical Docs →</a>
+  </div>
+</section>
+
+<!-- ECOSYSTEM -->
+<section class="section reveal" style="padding-top:0; text-align:center;">
+  <div class="label" style="margin-bottom:32px;">Built on</div>
+  <div style="display:flex; flex-wrap:wrap; align-items:center; justify-content:center; gap:40px; opacity:0.5;">
+    <!-- Starknet -->
+    <svg height="28" viewBox="0 0 200 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M20 10 L40 30 L20 50 L0 30 Z" stroke="currentColor" stroke-width="2" fill="none"/>
+      <path d="M40 30 L60 30" stroke="currentColor" stroke-width="2"/>
+      <text x="70" y="38" font-family="Inter,sans-serif" font-size="20" font-weight="500" fill="currentColor">Starknet</text>
+    </svg>
+    <!-- StarkWare -->
+    <svg height="28" viewBox="0 0 220 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="2" y="2" width="36" height="36" rx="4" stroke="currentColor" stroke-width="2" fill="none"/>
+      <path d="M10 20 L18 28 L30 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      <text x="50" y="28" font-family="Inter,sans-serif" font-size="20" font-weight="500" fill="currentColor">StarkWare</text>
+    </svg>
+    <!-- Dojo -->
+    <svg height="28" viewBox="0 0 140 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="20" cy="20" r="18" stroke="currentColor" stroke-width="2" fill="none"/>
+      <circle cx="20" cy="20" r="8" fill="currentColor" opacity="0.4"/>
+      <text x="48" y="28" font-family="Inter,sans-serif" font-size="20" font-weight="500" fill="currentColor">Dojo</text>
+    </svg>
+    <!-- Cartridge -->
+    <svg height="28" viewBox="0 0 200 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="2" y="8" width="32" height="24" rx="3" stroke="currentColor" stroke-width="2" fill="none"/>
+      <rect x="10" y="2" width="16" height="8" rx="2" stroke="currentColor" stroke-width="2" fill="none"/>
+      <text x="44" y="28" font-family="Inter,sans-serif" font-size="20" font-weight="500" fill="currentColor">Cartridge</text>
+    </svg>
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo" style="display:flex;align-items:center;gap:7px;">
+    <svg width="18" height="14" viewBox="0 0 28 22" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 0 L10 22 L14 14 L18 22 L28 0 L23 0 L14 16 L5 0 Z" fill="currentColor"/></svg>
+    <span>VEIL</span>
+  </div>
+  <div class="footer-links">
+    <a href="https://rufi.aircade.xyz">RUFi Studio</a>
+    <a href="https://rufidocs.aircade.xyz/docs/veil/intro">Docs</a>
+    <a href="mailto:hello@rufi.aircade.xyz">Contact</a>
+  </div>
+  <div>© 2026 RUFi Studio</div>
+</footer>
+
+<script>
+// ── THEME TOGGLE ──
+(function() {
+  const toggle = document.getElementById('theme-toggle');
+  const root = document.documentElement;
+  const stored = localStorage.getItem('veil-theme');
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  let dark = stored ? stored === 'dark' : prefersDark;
+
+  const moonSVG = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>`;
+  const sunSVG  = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>`;
+
+  function apply() {
+    root.setAttribute('data-theme', dark ? 'dark' : 'light');
+    toggle.innerHTML = dark ? sunSVG : moonSVG;
+  }
+  apply();
+  toggle.addEventListener('click', () => {
+    dark = !dark;
+    localStorage.setItem('veil-theme', dark ? 'dark' : 'light');
+    apply();
+  });
+})();
+
+// ── VEIL WORD CYCLE ──
+(function() {
+  const el = document.getElementById('hidden-word');
+  if (!el) return;
+  const words = ['sealed', 'proven', 'unseen', 'yours', 'safe'];
+  let idx = 0;
+
+  function cycle() {
+    // Veil it
+    el.classList.add('veiling');
+    el.classList.remove('unveiling');
+
+    setTimeout(() => {
+      // Change word while veiled
+      idx = (idx + 1) % words.length;
+      el.childNodes[0].textContent = words[idx];
+
+      // Unveil
+      el.classList.remove('veiling');
+      el.classList.add('unveiling');
+
+      setTimeout(() => {
+        el.classList.remove('unveiling');
+        setTimeout(cycle, 2800);
+      }, 320);
+    }, 320);
+  }
+
+  setTimeout(cycle, 2200);
+})();
+
+// ── HERO CANVAS — slow rotating octahedron wireframe ──
+(function() {
+  const canvas = document.getElementById('hero-canvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  canvas.width = 500; canvas.height = 500;
+
+  let frame = 0;
+
+  // Octahedron vertices
+  const verts = [
+    [0, 1, 0], [0,-1, 0],
+    [1, 0, 0], [-1, 0, 0],
+    [0, 0, 1], [0, 0,-1],
+  ];
+
+  const edges = [
+    [0,2],[0,3],[0,4],[0,5],
+    [1,2],[1,3],[1,4],[1,5],
+    [2,4],[4,3],[3,5],[5,2],
+  ];
+
+  function project(x, y, z) {
+    const scale = 160;
+    const cx = 250, cy = 250;
+    return [cx + x * scale, cy - y * scale];
+  }
+
+  function rotY(v, a) {
+    return [v[0]*Math.cos(a) + v[2]*Math.sin(a), v[1], -v[0]*Math.sin(a) + v[2]*Math.cos(a)];
+  }
+
+  function rotX(v, a) {
+    return [v[0], v[1]*Math.cos(a) - v[2]*Math.sin(a), v[1]*Math.sin(a) + v[2]*Math.cos(a)];
+  }
+
+  function loop() {
+    ctx.clearRect(0, 0, 500, 500);
+    frame++;
+    const ay = frame * 0.004;
+    const ax = frame * 0.0025;
+
+    const projected = verts.map(v => {
+      let rv = rotY(v, ay);
+      rv = rotX(rv, ax);
+      return project(...rv);
+    });
+
+    // Edges
+    edges.forEach(([a, b]) => {
+      ctx.beginPath();
+      ctx.moveTo(projected[a][0], projected[a][1]);
+      ctx.lineTo(projected[b][0], projected[b][1]);
+      ctx.strokeStyle = 'rgba(99,102,241,0.35)';
+      ctx.lineWidth = 0.8;
+      ctx.stroke();
+    });
+
+    // Vertices
+    projected.forEach(([px, py]) => {
+      ctx.beginPath();
+      ctx.arc(px, py, 3, 0, Math.PI*2);
+      ctx.fillStyle = 'rgba(129,140,248,0.6)';
+      ctx.fill();
+    });
+
+    requestAnimationFrame(loop);
+  }
+
+  loop();
+})();
+
+// ── SCROLL REVEAL ──
+(function() {
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) e.target.classList.add('visible');
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+})();
+</script>
+</body>
+</html>
