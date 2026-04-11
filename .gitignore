@@ -1,0 +1,32 @@
+# === OS / Editor ===
+.DS_Store
+*.swp
+*~
+.vscode/
+.idea/
+
+# === Node ===
+node_modules/
+dist/
+build/
+.env
+.env.*
+!.env.example
+
+# === Favicon Experiments ===
+# Keep favicon.ico and favicon.svg in repo only
+favicon.jpg
+favicon.png
+*.favicon.jpg
+favicon-visual.html
+favicon_info.txt
+
+# === Build artifacts ===
+*.o
+*.so
+target/
+
+# === Secrets ===
+.secrets
+*.key
+*.pem
