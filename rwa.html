@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Veil for RWA — Privacy Layer for Tokenized Assets</title>
-  <meta name="description" content="Veil is the privacy layer for RWA platforms. Enable ZK-KYC, transaction privacy, and audit receipts for tokenized assets. Apply for pilot integration."/>
+  <title>Veil for Partners — RWA Privacy Infrastructure</title>
+  <meta name="description" content="Veil brings privacy and compliance to RWA platforms. Partner with us to integrate ZK-protected asset infrastructure."/>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
@@ -36,49 +36,90 @@
     .nav-links { display: flex; gap: 32px; font-size: 13px; color: var(--fg2); }
     .nav-links a { transition: color 0.2s; font-weight: 400; }
     .nav-links a:hover { color: var(--fg); }
-    .nav-cta { font-size: 13px; font-weight: 500; padding: 9px 22px; background: var(--indigo); color: #fff; border-radius: 4px; letter-spacing: 0.02em; transition: all 0.2s; box-shadow: var(--shadow-far) 0px 6px 20px -4px; }
+    .nav-cta {
+      font-size: 13px; font-weight: 500; padding: 9px 22px;
+      background: var(--indigo); color: #fff; border-radius: 4px;
+      letter-spacing: 0.02em; transition: all 0.2s;
+      box-shadow: var(--shadow-far) 0px 6px 20px -4px;
+    }
     .nav-cta:hover { background: var(--indigo2); transform: translateY(-1px); box-shadow: var(--shadow-far) 0px 10px 28px -4px; }
     .section { max-width: 1100px; margin: 0 auto; padding: 120px 56px; }
     .label { font-size: 11px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--fg3); margin-bottom: 28px; }
-    .title-lg { font-family: 'Space Grotesk', sans-serif; font-size: clamp(28px, 3vw, 44px); font-weight: 300; line-height: 1.15; letter-spacing: -0.02em; color: var(--fg); max-width: 600px; }
+    .title-lg {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(28px, 3vw, 44px); font-weight: 300;
+      line-height: 1.15; letter-spacing: -0.02em; color: var(--fg);
+      max-width: 600px;
+    }
     .section-desc { font-size: 1.05rem; font-weight: 300; color: var(--fg2); line-height: 1.7; max-width: 520px; margin-top: 16px; }
-    .grid { display: grid; gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; box-shadow: var(--shadow-far) 0px 12px 24px -12px; }
-    .card { background: var(--card-bg); padding: 44px; transition: background 0.2s; }
+    .grid {
+      display: grid; gap: 1px; background: var(--border);
+      border: 1px solid var(--border); border-radius: 8px;
+      overflow: hidden; box-shadow: var(--shadow-far) 0px 12px 24px -12px;
+    }
+    .card {
+      background: var(--card-bg); padding: 44px;
+      transition: background 0.2s;
+    }
     .card:hover { background: var(--bg3); }
     .card-title { font-family: 'Space Grotesk', sans-serif; font-size: 16px; font-weight: 500; color: var(--fg); margin-bottom: 12px; }
     .card-body { font-size: 14px; font-weight: 300; color: var(--fg2); line-height: 1.8; }
     .check { color: var(--teal); font-weight: 600; }
-    .cross { color: var(--fg3); }
     .btn { display: inline-block; padding: 13px 32px; font-size: 13px; font-weight: 500; letter-spacing: 0.04em; border-radius: 4px; transition: all 0.2s; }
     .btn-primary { background: var(--indigo); color: #fff; box-shadow: var(--shadow-far) 0px 8px 24px -6px; }
     .btn-primary:hover { background: var(--indigo2); transform: translateY(-2px); box-shadow: var(--shadow-far) 0px 14px 32px -6px; }
     .btn-ghost { border: 1px solid var(--border2); color: var(--fg2); background: transparent; }
     .btn-ghost:hover { border-color: var(--indigo2); color: var(--indigo2); }
     .cta-section { padding: 140px 56px; text-align: center; position: relative; overflow: hidden; }
-    .cta-section::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at center, rgba(79,82,200,0.10) 0%, transparent 60%); pointer-events: none; }
-    .cta-title { font-family: 'Space Grotesk', sans-serif; font-size: clamp(32px, 4vw, 56px); font-weight: 300; letter-spacing: -0.02em; margin-bottom: 16px; }
+    .cta-section::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse at center, rgba(79,82,200,0.10) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .cta-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(32px, 4vw, 56px); font-weight: 300;
+      letter-spacing: -0.02em; margin-bottom: 16px;
+    }
     .cta-sub { font-size: 1.1rem; font-weight: 300; color: var(--fg2); margin-bottom: 40px; }
     .form { max-width: 520px; margin: 40px auto 0; text-align: left; }
     .form-group { margin-bottom: 16px; }
     .form label { display: block; font-size: 12px; font-weight: 500; letter-spacing: 0.1em; color: var(--fg3); margin-bottom: 8px; }
-    .form input, .form select, .form textarea { width: 100%; padding: 14px 16px; background: var(--card-bg); border: 1px solid var(--border); color: var(--fg); border-radius: 6px; font-family: 'Inter', sans-serif; font-size: 14px; transition: border-color 0.2s; }
+    .form input, .form select, .form textarea {
+      width: 100%; padding: 14px 16px; background: var(--card-bg);
+      border: 1px solid var(--border); color: var(--fg);
+      border-radius: 6px; font-family: 'Inter', sans-serif; font-size: 14px;
+      transition: border-color 0.2s;
+    }
     .form input:focus, .form textarea:focus { outline: none; border-color: var(--indigo); }
     .form ::placeholder { color: var(--fg3); opacity: 0.6; }
-    .submit-btn { width: 100%; padding: 14px; background: var(--indigo); color: #fff; border: none; border-radius: 6px; font-family: 'Space Grotesk', sans-serif; font-size: 14px; font-weight: 500; cursor: pointer; transition: background 0.2s; }
+    .submit-btn {
+      width: 100%; padding: 14px; background: var(--indigo);
+      color: #fff; border: none; border-radius: 6px;
+      font-family: 'Space Grotesk', sans-serif; font-size: 14px; font-weight: 500;
+      cursor: pointer; transition: background 0.2s;
+    }
     .submit-btn:hover { background: var(--indigo2); }
     .form-note { font-size: 12px; color: var(--fg3); text-align: center; margin-top: 12px; }
-    footer { border-top: 1px solid var(--border); padding: 48px 56px; display: flex; justify-content: space-between; align-items: center; max-width: 1100px; margin: 0 auto; font-size: 12px; color: var(--fg3); font-weight: 300; }
+    footer {
+      border-top: 1px solid var(--border); padding: 48px 56px;
+      display: flex; justify-content: space-between; align-items: center;
+      max-width: 1100px; margin: 0 auto; font-size: 12px; color: var(--fg3); font-weight: 300;
+    }
+    .partner-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+    .partner-table td { padding: 14px; border-bottom: 1px solid var(--border); }
+    .partner-name { font-weight: 600; color: var(--fg); }
+    .partner-desc { font-size: 12px; color: var(--fg3); }
     @media (max-width: 768px) {
       .section { padding: 80px 24px; }
       nav { padding: 0 24px; }
       .nav-links { display: none; }
-      .grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
 <nav>
-  <a href="#" class="nav-logo">
+  <a href="https://veil.aircade.xyz/" class="nav-logo">
     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--indigo2)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 L20 7 V13 Q20 18 12 21 Q4 18 4 13 V7 Z"/><path d="M12 3 V21" opacity="0.3"/><path d="M4 7 Q12 11 20 7" opacity="0.5"/></svg>
     Veil
   </a>
@@ -93,71 +134,54 @@
   <div class="label">For Partners</div>
   <h1 class="title-lg">Privacy Infrastructure for RWA Platforms</h1>
   <p class="section-desc">
-    Veil enables tokenized asset platforms to meet compliance requirements without exposing sensitive investor and originator data. ZK-powered privacy built for institutional deployment.
+    Veil enables tokenized asset platforms to protect investor data while meeting compliance requirements. Built for institutional deployment.
   </p>
 </section>
 
 <section class="section" style="border-top: 1px solid var(--border);">
-  <div class="label">The Problem</div>
-  <h2 class="title-lg">Compliance vs. Exposure</h2>
-  <div class="grid" style="margin-top: 32px; border: none; box-shadow: none; background: transparent; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px;">
-    <div class="card" style="border: 1px solid var(--border); border-radius: 8px;">
-      <div class="card-title">Regulatory Risk</div>
-      <div class="card-body">GDPR/CCPA exposure when KYC and asset data live on-chain in plaintext.</div>
+  <div class="label">Why Veil</div>
+  <h2 class="title-lg">Compliance Without Exposure</h2>
+
+  <div class="grid" style="margin-top: 32px; border: none; box-shadow: none; background: transparent; display: grid; grid-template-columns: 1fr 1fr; gap: 40px;">
+    <div>
+      <div class="card" style="border: 2px solid var(--indigo);">
+        <div class="card-title">The Challenge</div>
+        <div class="card-body">
+          RWA platforms face a dual problem: regulations require KYC and audit logs, but institutional investors refuse to participate if their positions and data are publicly visible on-chain.
+        </div>
+      </div>
     </div>
-    <div class="card" style="border: 1px solid var(--border); border-radius: 8px;">
-      <div class="card-title">Investor Reluctance</div>
-      <div class="card-body">High-net-worth individuals and funds won't participate if positions are public.</div>
-    </div>
-    <div class="card" style="border: 1px solid var(--border); border-radius: 8px;">
-      <div class="card-title">Competitive Leakage</div>
-      <div class="card-body">Loan terms, rates, covenants, and asset composition visible to competitors.</div>
+    <div>
+      <div class="card" style="border: 2px solid var(--teal);">
+        <div class="card-title">Our Approach</div>
+        <div class="card-body">
+          Privacy-by-default architecture. Prove compliance without revealing underlying data. Keep investor identities, loan terms, and holdings confidential while satisfying auditors.
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
 <section class="section">
-  <div class="label">Solution</div>
-  <h2 class="title-lg">Veil for RWA</h2>
-  <p class="section-desc" style="margin-top: 24px;">
-    A drop-in ZK-privacy module for tokenized asset platforms. Prove compliance without revealing underlying data.
-  </p>
+  <div class="label">Capabilities</div>
+  <h2 class="title-lg">What Veil Provides</h2>
 
-  <div class="grid" style="margin-top: 40px; border: none; box-shadow: none; background: transparent; display: grid; grid-template-columns: 1fr 1fr; gap: 40px;">
-    <div>
-      <div class="card" style="border: none; box-shadow: none; padding: 0;">
-        <div class="card-title" style="font-size: 18px; margin-bottom: 20px;">Capabilities</div>
-        <div style="display: grid; gap: 16px;">
-          <div style="display: flex; gap: 12px; font-size: 14px;">
-            <span style="color: var(--teal); font-weight: 700;">✓</span>
-            <div><strong>ZK-KYC:</strong> Prove accredited status without revealing identity or net worth.</div>
-          </div>
-          <div style="display: flex; gap: 12px; font-size: 14px;">
-            <span style="color: var(--teal); font-weight: 700;">✓</span>
-            <div><strong>Transaction Privacy:</strong> Hide loan amounts, rates, and holdings while proving solvency.</div>
-          </div>
-          <div style="display: flex; gap: 12px; font-size: 14px;">
-            <span style="color: var(--teal); font-weight: 700;">✓</span>
-            <div><strong>Audit Receipts:</strong> Cryptographically signed compliance records (Patronaige integration planned).</div>
-          </div>
-          <div style="display: flex; gap: 12px; font-size: 14px;">
-            <span style="color: var(--teal); font-weight: 700;">✓</span>
-            <div><strong>2-Week Integration:</strong> SDK + pre-built UI components; minimal smart contract changes.</div>
-          </div>
-        </div>
-      </div>
+  <div class="grid" style="margin-top: 40px; border: none; box-shadow: none; background: transparent; display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+    <div class="card">
+      <div class="card-title">Private KYC Attestations</div>
+      <div class="card-body">Investors prove accredited status without exposing personal documents or net worth details.</div>
     </div>
-
-    <div>
-      <div class="card" style="background: var(--bg2); border: 1px solid var(--border);">
-        <div class="card-title" style="font-size: 14px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--fg3); margin-bottom: 20px;">Integration Pathway</div>
-        <div style="display: grid; gap: 12px; font-size: 14px;">
-          <div><strong>Week 1:</strong> SDK sandbox + technical documentation review</div>
-          <div><strong>Week 2:</strong> PoC for one core use case (e.g., investor accreditation)</div>
-          <div><strong>Week 3:</strong> Testnet deployment + compliance officer walkthrough</div>
-          <div><strong>Week 4:</strong> Mainnet integration + joint announcement</div>
-        </div>
-      </div>
+    <div class="card">
+      <div class="card-title">Transaction Obfuscation</div>
+      <div class="card-body">Loan amounts, interest rates, and asset holdings are hidden while solvency proofs remain verifiable.</div>
+    </div>
+    <div class="card">
+      <div class="card-title">Audit-Ready Logs</div>
+      <div class="card-body">Cryptographically signed compliance records available for regulator review without public disclosure.</div>
+    </div>
+    <div class="card">
+      <div class="card-title">Self-Custodial Design</div>
+      <div class="card-body">No trusted third party holds secrets. Your users retain control of their private data.</div>
     </div>
   </div>
 </section>
@@ -165,23 +189,42 @@
 <section class="section" style="border-top: 1px solid var(--border);">
   <div class="label">Target Partners</div>
   <h2 class="title-lg">Leading RWA Platforms</h2>
-  <div class="grid" style="margin-top: 32px; border: none; box-shadow: none; background: transparent; display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1px;">
-    <table style="width: 100%; border-collapse: collapse; font-size: 13px;">
-      <tr><td class="company" style="padding: 14px; border-bottom: 1px solid var(--border); font-weight: 600;">Centrifuge</td><td style="padding: 14px; border-bottom: 1px solid var(--border); font-size: 12px; color: var(--fg3);">Private Credit</td></tr>
-      <tr><td class="company">Maple Finance</td><td style="font-size: 12px; color: var(--fg3);">Institutional Lending</td></tr>
-      <tr><td class="company">Goldfinch Prime</td><td style="font-size: 12px; color: var(--fg3);">Private Credit Funds</td></tr>
-      <tr><td class="company">Ondo Finance</td><td style="font-size: 12px; color: var(--fg3);">Tokenized Treasuries</td></tr>
-      <tr><td class="company">Midas</td><td style="font-size: 12px; color: var(--fg3);">Liquidity Layer</td></tr>
-      <tr><td class="company">Plume Network</td><td style="font-size: 12px; color: var(--fg3);">RWA L1</td></tr>
-      <tr><td class="company">Brickken</td><td style="font-size: 12px; color: var(--fg3);">Real Estate</td></tr>
-      <tr><td class="company">RealT</td><td style="font-size: 12px; color: var(--fg3);">Fractional Real Estate</td></tr>
+  <div class="grid" style="margin-top: 32px; border: none; box-shadow: none; background: transparent;">
+    <table class="partner-table">
+      <tr>
+        <td class="partner-name">Centrifuge</td>
+        <td class="partner-desc">Private credit pools with investor anonymity</td>
+      </tr>
+      <tr>
+        <td class="partner-name">Maple Finance</td>
+        <td class="partner-desc">Institutional lending with hidden positions</td>
+      </tr>
+      <tr>
+        <td class="partner-name">Goldfinch Prime</td>
+        <td class="partner-desc">Private credit fund allocation privacy</td>
+      </tr>
+      <tr>
+        <td class="partner-name">Ondo Finance</td>
+        <td class="partner-desc">Tokenized treasuries with provenance</td>
+      </tr>
+      <tr>
+        <td class="partner-name">Midas</td>
+        <td class="partner-desc">Liquidity layer with compliance privacy</td>
+      </tr>
+      <tr>
+        <td class="partner-name">Plume Network</td>
+        <td class="partner-desc">RWA L1 with built-in privacy modules</td>
+      </tr>
     </table>
   </div>
 </section>
 
 <section class="cta-section">
-  <h2 class="cta-title">Apply for Pilot Integration</h2>
-  <p class="cta-sub">We are selecting 5 RWA platforms for our free 3-month pilot. Includes full technical support and joint announcement.</p>
+  <h2 class="cta-title">Pilot Integration Program</h2>
+  <p class="cta-sub">
+    We're selecting 5 RWA platforms for a free 3-month pilot.<br>
+    Includes SDK integration support and joint announcement.
+  </p>
   <form class="form" action="mailto:carlosdelafiguera@gmail.com" method="POST" enctype="text/plain">
     <div class="form-group">
       <label>Company</label>
@@ -196,46 +239,24 @@
       <input type="email" name="email" placeholder="you@company.com" required>
     </div>
     <div class="form-group">
-      <label>RWA Vertical</label>
-      <select name="vertical" required>
-        <option value="">Select...</option>
-        <option value="private-credit">Private Credit</option>
-        <option value="treasuries">Tokenized Treasuries</option>
-        <option value="real-estate">Real Estate</option>
-        <option value="commodities">Commodities</option>
-        <option value="other">Other</option>
-      </select>
-    </div>
-    <div class="form-group">
       <label>Use Case</label>
-      <textarea name="use_case" rows="3" placeholder="Briefly describe your privacy needs..."></textarea>
+      <textarea name="use_case" rows="3" placeholder="Briefly describe your privacy needs (e.g., investor anonymity, transaction hiding, audit receipts)"></textarea>
     </div>
     <button type="submit" class="submit-btn">Submit Pilot Application</button>
-    <p class="form-note">We'll respond within 24 hours. Confidential — NDA available.</p>
+    <p class="form-note">We respond within 24 hours. NDA available.</p>
   </form>
 </section>
 
 <footer>
   <span>Veil Privacy Infrastructure © 2026</span>
   <div>
-    <a href="https://veil.aircade.xyz" style="margin-right: 24px;">Main Site</a>
+    <a href="https://veil.aircade.xyz/" style="margin-right: 24px;">Main Site</a>
     <a href="mailto:carlosdelafiguera@gmail.com">Contact</a>
   </div>
 </footer>
 
 <script>
-  const toggle = document.getElementById('theme-toggle');
-  const html = document.documentElement;
-  const stored = localStorage.getItem('veil-theme');
-  if (stored) html.setAttribute('data-theme', stored);
-  if (toggle) {
-    toggle.addEventListener('click', () => {
-      const next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-      html.setAttribute('data-theme', next);
-      localStorage.setItem('veil-theme', next);
-    });
-  }
-  const reveals = document.querySelectorAll('.card, .section');
+  const reveals = document.querySelectorAll('.card, .section, .hero-title');
   const obs = new IntersectionObserver((entries) => {
     entries.forEach(e => { if (e.isIntersecting) e.target.style.opacity = 1; });
   }, { threshold: 0.1 });
