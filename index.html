@@ -3,961 +3,319 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Veil — Every Asset. Yours.</title>
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%234f52c8'/%3E%3Cpath d='M50 20 L80 35 L80 55 Q80 75 50 85 Q20 75 20 55 L20 35 Z' fill='none' stroke='white' stroke-width='5'/%3E%3Cpath d='M50 20 L50 85' fill='none' stroke='white' stroke-width='3' opacity='0.4'/%3E%3Cpath d='M25 40 Q50 55 75 40' fill='none' stroke='white' stroke-width='3' opacity='0.6'/%3E%3C/svg%3E">
-  <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%234f52c8'/%3E%3Cpath d='M50 20 L80 35 L80 55 Q80 75 50 85 Q20 75 20 55 L20 35 Z' fill='none' stroke='white' stroke-width='5'/%3E%3Cpath d='M50 20 L50 85' fill='none' stroke='white' stroke-width='3' opacity='0.4'/%3E%3Cpath d='M25 40 Q50 55 75 40' fill='none' stroke='white' stroke-width='3' opacity='0.6'/%3E%3C/svg%3E">
-  <meta name="description" content="Privacy infrastructure for institutional assets. Quantum-resistant. Self-custodial. Impossible to break."/>
-  <meta property="og:title" content="Veil"/>
-  <meta property="og:description" content="Every asset. Yours and sovereign."/>
-  <meta name="twitter:card" content="summary_large_image"/>
+  <title>Veil — Privacy Infrastructure for Tokenized Assets</title>
+  <meta name="description" content="Veil provides privacy for RWA platforms. Keep investor data and transaction details confidential while meeting compliance requirements. SDK + UI components, 2-week integration."/>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet">
-
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    /* ── THEMES ── */
     [data-theme="dark"] {
-      --bg:        #07080f;
-      --bg2:       #0d0f1c;
-      --bg3:       #13162a;
-      --fg:        #e2e4ec;
-      --fg2:       #8c91a8;
-      --fg3:       #4a5068;
-      --border:    rgba(255,255,255,0.06);
-      --border2:   rgba(255,255,255,0.10);
-      --indigo:    #4f52c8;
-      --indigo2:   #7b7fde;
-      --indigo-bg: rgba(79,82,200,0.08);
-      --teal:      #2ec4b6;
-      --card-bg:   #0d0f1c;
-      --nav-bg:    rgba(7,8,15,0.88);
-      --shadow-far: rgba(60,60,180,0.20);
-      --shadow-near: rgba(0,0,0,0.40);
+      --bg: #07080f; --bg2: #0d0f1c; --bg3: #13162a; --fg: #e2e4ec; --fg2: #8c91a8; --fg3: #4a5068;
+      --border: rgba(255,255,255,0.06); --border2: rgba(255,255,255,0.10);
+      --indigo: #4f52c8; --indigo2: #7b7fde; --indigo-bg: rgba(79,82,200,0.08);
+      --teal: #2ec4b6; --card-bg: #0d0f1c; --nav-bg: rgba(7,8,15,0.88);
+      --shadow-far: rgba(60,60,180,0.20); --shadow-near: rgba(0,0,0,0.40);
     }
-
-    [data-theme="light"] {
-      --bg:        #f4f5fa;
-      --bg2:       #ecedf5;
-      --bg3:       #e3e4f0;
-      --fg:        #0d0f1c;
-      --fg2:       #4a5068;
-      --fg3:       #8c91a8;
-      --border:    rgba(0,0,0,0.07);
-      --border2:   rgba(0,0,0,0.12);
-      --indigo:    #4f52c8;
-      --indigo2:   #3b3ea8;
-      --indigo-bg: rgba(79,82,200,0.06);
-      --teal:      #1a9e92;
-      --card-bg:   #ecedf5;
-      --nav-bg:    rgba(244,245,250,0.92);
-      --shadow-far: rgba(50,50,120,0.12);
-      --shadow-near: rgba(0,0,0,0.06);
-    }
-
     html { scroll-behavior: smooth; }
-
     body {
       font-family: 'Inter', system-ui, sans-serif;
-      background: var(--bg);
-      color: var(--fg);
-      -webkit-font-smoothing: antialiased;
-      overflow-x: hidden;
+      background: var(--bg); color: var(--fg);
+      -webkit-font-smoothing: antialiased; overflow-x: hidden;
       transition: background 0.3s, color 0.3s;
     }
-
     a { color: inherit; text-decoration: none; }
-
-    /* ── NAV ── */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
       display: flex; align-items: center; justify-content: space-between;
       padding: 0 56px; height: 68px;
-      background: var(--nav-bg);
-      backdrop-filter: blur(24px) saturate(1.2);
+      background: var(--nav-bg); backdrop-filter: blur(24px) saturate(1.2);
       border-bottom: 1px solid var(--border);
     }
-
-    .nav-logo {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 17px; font-weight: 500;
-      letter-spacing: 0.18em; text-transform: uppercase;
-      color: var(--fg);
-      display: flex; align-items: center; gap: 10px;
-    }
-
-    .nav-logo svg { flex-shrink: 0; }
-
+    .nav-logo { font-family: 'Space Grotesk', sans-serif; font-size: 17px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--fg); display: flex; align-items: center; gap: 10px; }
     .nav-right { display: flex; align-items: center; gap: 36px; }
-
-    .nav-links {
-      display: flex; gap: 32px;
-      font-size: 13px; color: var(--fg2);
-    }
+    .nav-links { display: flex; gap: 32px; font-size: 13px; color: var(--fg2); }
     .nav-links a { transition: color 0.2s; font-weight: 400; }
     .nav-links a:hover { color: var(--fg); }
-
-    #theme-toggle {
-      background: none; border: none; cursor: pointer;
-      color: var(--fg2); display: flex; align-items: center;
-      opacity: 0.7; transition: opacity 0.2s; padding: 4px;
-    }
-    #theme-toggle:hover { opacity: 1; }
-
     .nav-cta {
-      font-size: 13px; font-weight: 500;
-      padding: 9px 22px;
-      background: var(--indigo);
-      color: #fff;
-      border-radius: 4px;
-      letter-spacing: 0.02em;
-      transition: all 0.2s;
+      font-size: 13px; font-weight: 500; padding: 9px 22px;
+      background: var(--indigo); color: #fff; border-radius: 4px;
+      letter-spacing: 0.02em; transition: all 0.2s;
       box-shadow: var(--shadow-far) 0px 6px 20px -4px;
     }
-    .nav-cta:hover {
-      background: var(--indigo2);
-      transform: translateY(-1px);
-      box-shadow: var(--shadow-far) 0px 10px 28px -4px;
-    }
-
-    /* ── HERO ── */
-    #hero {
-      position: relative;
-      min-height: 100vh;
-      display: flex; flex-direction: column;
-      justify-content: center;
-      padding: 160px 56px 100px;
-      max-width: 1200px; margin: 0 auto;
-      overflow: hidden;
-    }
-
-    #hero-canvas {
-      position: absolute;
-      right: -60px; top: 50%;
-      transform: translateY(-50%);
-      width: 480px; height: 480px;
-      opacity: 0.22;
-      pointer-events: none;
-    }
-
-    .hero-visual {
-      position: absolute;
-      right: 40px; top: 50%;
-      transform: translateY(-50%);
-      width: 420px;
-      z-index: 1;
-      pointer-events: none;
-    }
-
-    .hero-visual img {
-      width: 100%;
-      border-radius: 8px;
-      box-shadow: var(--shadow-far) 0px 30px 60px -20px, var(--shadow-near) 0px 18px 36px -18px;
-    }
-
-    .hero-tag {
-      display: inline-flex; align-items: center; gap: 10px;
-      font-size: 11px; font-weight: 500;
-      letter-spacing: 0.2em; text-transform: uppercase;
-      color: var(--fg3); margin-bottom: 36px;
-      position: relative; z-index: 2;
-    }
-
-    .hero-tag-dot {
-      width: 6px; height: 6px; border-radius: 50%;
-      background: var(--teal);
-      box-shadow: 0 0 10px var(--teal);
-    }
-
-    .hero-title {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: clamp(44px, 5.5vw, 78px);
-      font-weight: 300; line-height: 1.06;
-      letter-spacing: -0.03em;
-      color: var(--fg);
-      max-width: 720px;
-      position: relative; z-index: 2;
-    }
-
-    .hero-title .line2 {
-      display: flex; align-items: baseline; gap: 0.22em; flex-wrap: wrap;
-    }
-
-    .yours { color: var(--fg); }
-
-    .hidden-word {
-      position: relative;
-      color: var(--indigo2);
-      white-space: nowrap;
-      display: inline-block;
-      min-width: 5ch;
-    }
-
-    .hidden-word .veil {
-      position: absolute;
-      left: 0; top: 12%;
-      width: 100%; height: 76%;
-      background: var(--indigo);
-      border-radius: 2px;
-      transform: scaleX(0);
-      transform-origin: left;
-    }
-
-    .hidden-word.veiling .veil {
-      animation: veil-in 0.3s forwards;
-    }
-    .hidden-word.unveiling .veil {
-      animation: veil-out 0.3s forwards;
-    }
-
-    @keyframes veil-in {
-      from { transform: scaleX(0); transform-origin: left; }
-      to   { transform: scaleX(1); transform-origin: left; }
-    }
-
-    @keyframes veil-out {
-      from { transform: scaleX(1); transform-origin: right; }
-      to   { transform: scaleX(0); transform-origin: right; }
-    }
-
-    .hero-sub {
-      margin-top: 32px;
-      font-size: 17px; font-weight: 300;
-      color: var(--fg2); line-height: 1.75;
-      max-width: 460px;
-      position: relative; z-index: 2;
-    }
-
-    .hero-properties {
-      margin-top: 44px;
-      display: flex; flex-wrap: wrap; gap: 10px;
-      position: relative; z-index: 2;
-    }
-
-    .property {
-      display: inline-flex; align-items: center; gap: 7px;
-      font-size: 11px; font-weight: 500;
-      letter-spacing: 0.1em; text-transform: uppercase;
-      color: var(--fg2);
-      padding: 8px 14px;
-      border: 1px solid var(--border2);
-      border-radius: 3px;
-      background: var(--indigo-bg);
-      backdrop-filter: blur(8px);
-    }
-
-    .property-dot {
-      width: 5px; height: 5px; border-radius: 50%;
-      background: var(--teal);
-    }
-
-    .hero-actions {
-      margin-top: 44px;
-      display: flex; gap: 14px; align-items: center; flex-wrap: wrap;
-      position: relative; z-index: 2;
-    }
-
-    .btn-primary {
-      padding: 13px 32px;
-      background: var(--indigo);
-      color: #fff;
-      font-size: 13px; font-weight: 500;
-      letter-spacing: 0.04em;
-      border-radius: 4px;
-      transition: all 0.2s;
-      box-shadow: var(--shadow-far) 0px 8px 24px -6px;
-    }
-    .btn-primary:hover {
-      background: var(--indigo2);
-      transform: translateY(-2px);
-      box-shadow: var(--shadow-far) 0px 14px 32px -6px;
-    }
-
-    .btn-ghost {
-      padding: 13px 32px;
-      border: 1px solid var(--border2);
-      color: var(--fg2);
-      font-size: 13px; font-weight: 400;
-      border-radius: 4px;
-      transition: all 0.2s;
-      background: transparent;
-    }
-    .btn-ghost:hover { border-color: var(--indigo2); color: var(--indigo2); }
-
-    /* ── DIVIDER ── */
-    .divider {
-      border: none;
-      border-top: 1px solid var(--border);
-      margin: 0;
-    }
-
-    /* ── SECTION ── */
-    .section {
-      max-width: 1100px; margin: 0 auto;
-      padding: 120px 56px;
-    }
-
-    .label {
-      font-size: 11px; font-weight: 600;
-      letter-spacing: 0.2em; text-transform: uppercase;
-      color: var(--fg3); margin-bottom: 28px;
-    }
-
+    .nav-cta:hover { background: var(--indigo2); transform: translateY(-1px); box-shadow: var(--shadow-far) 0px 10px 28px -4px; }
+    .section { max-width: 1100px; margin: 0 auto; padding: 120px 56px; }
+    .label { font-size: 11px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--fg3); margin-bottom: 28px; }
     .title-lg {
       font-family: 'Space Grotesk', sans-serif;
-      font-size: clamp(28px, 3vw, 44px);
-      font-weight: 300; line-height: 1.15;
-      letter-spacing: -0.02em;
-      color: var(--fg); max-width: 600px;
+      font-size: clamp(28px, 3vw, 44px); font-weight: 300;
+      line-height: 1.15; letter-spacing: -0.02em; color: var(--fg);
+      max-width: 680px;
     }
-
-    .title-lg .acc { color: var(--indigo2); }
-
     .section-desc {
-      font-size: 1.05rem; font-weight: 300;
-      color: var(--fg2); line-height: 1.7;
-      max-width: 520px; margin-top: 16px;
+      font-size: 1.05rem; font-weight: 300; color: var(--fg2);
+      line-height: 1.7; max-width: 520px; margin-top: 16px;
     }
-
-    /* ── WHY GRID ── */
-    .why-grid {
-      margin-top: 64px;
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1px;
-      background: var(--border);
-      border: 1px solid var(--indigo);
-      border-radius: 8px;
-      overflow: hidden;
-      box-shadow: var(--shadow-far) 0px 20px 40px -20px;
+    .grid {
+      display: grid; gap: 1px; background: var(--border);
+      border: 1px solid var(--border); border-radius: 8px;
+      overflow: hidden; box-shadow: var(--shadow-far) 0px 12px 24px -12px;
     }
-
-    .why-card {
-      background: var(--card-bg);
-      padding: 44px 36px;
-      border-top: 2px solid var(--indigo);
-      transition: all 0.25s;
-    }
-
-    .why-card:hover {
-      background: var(--bg3);
-      transform: translateY(-2px);
-    }
-
-    .why-card-title {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 16px; font-weight: 500;
-      color: var(--fg); margin-bottom: 14px;
-      letter-spacing: 0.01em;
-    }
-
-    .why-card-body {
-      font-size: 14px; font-weight: 300;
-      color: var(--fg2); line-height: 1.85;
-    }
-
-    /* ── PILLARS ── */
-    .pillars {
-      margin-top: 64px;
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 1px;
-      background: var(--border);
-      border: 1px solid var(--border);
-      border-radius: 8px; overflow: hidden;
-      box-shadow: var(--shadow-far) 0px 16px 32px -16px;
-    }
-
-    .pillar {
-      background: var(--card-bg);
-      padding: 40px 32px;
-      transition: background 0.25s;
-    }
-
-    .pillar:hover { background: var(--bg3); }
-
-    .pillar-icon {
-      width: 36px; height: 36px;
-      display: flex; align-items: center; justify-content: center;
-      border: 1px solid var(--border2);
-      border-radius: 6px;
-      margin-bottom: 20px;
-      color: var(--indigo2); font-size: 16px;
-    }
-
-    .pillar-title {
-      font-size: 14px; font-weight: 500;
-      color: var(--fg); margin-bottom: 10px;
-      letter-spacing: 0.01em;
-    }
-
-    .pillar-desc {
-      font-size: 13px; font-weight: 300;
-      color: var(--fg2); line-height: 1.8;
-    }
-
-    /* ── PROPS GRID ── */
-    .props-grid {
-      margin-top: 64px;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1px;
-      background: var(--border);
-      border: 1px solid var(--border);
-      border-radius: 8px; overflow: hidden;
-      box-shadow: var(--shadow-far) 0px 20px 40px -20px;
-    }
-
-    .prop-card {
-      background: var(--card-bg);
-      padding: 48px 44px;
+    .card {
+      background: var(--card-bg); padding: 44px;
       transition: background 0.2s;
     }
-    .prop-card:hover { background: var(--bg3); }
-
-    .prop-num {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 11px; font-weight: 600;
-      letter-spacing: 0.18em; color: var(--indigo2);
-      margin-bottom: 20px;
+    .card:hover { background: var(--bg3); }
+    .card-title {
+      font-family: 'Space Grotesk', sans-serif; font-size: 16px;
+      font-weight: 500; color: var(--fg); margin-bottom: 12px;
     }
-
-    .prop-title {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 22px; font-weight: 400;
-      color: var(--fg); margin-bottom: 14px; line-height: 1.2;
+    .card-body {
+      font-size: 14px; font-weight: 300; color: var(--fg2); line-height: 1.8;
     }
-
-    .prop-desc {
-      font-size: 14px; font-weight: 300;
-      color: var(--fg2); line-height: 1.9;
-    }
-
-    .prop-stat {
-      margin-top: 28px; padding-top: 24px;
-      border-top: 1px solid var(--border);
-      display: flex; align-items: baseline; gap: 10px;
-    }
-
-    .prop-stat-val {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 32px; font-weight: 300;
-      color: var(--fg);
-    }
-
-    .prop-stat-val span { color: var(--teal); }
-
-    .prop-stat-label {
-      font-size: 12px; color: var(--fg3);
-      letter-spacing: 0.04em;
-    }
-
-    /* ── SECURITY BLOCK ── */
-    .security-block {
-      margin-top: 2px;
-      background: var(--card-bg);
-      border-top: 1px solid var(--border);
-      padding: 48px 44px;
-      grid-column: span 2;
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap: 40px;
-      align-items: start;
-    }
-
-    .security-item { display: flex; flex-direction: column; gap: 8px; }
-
-    .security-label {
-      font-size: 10px; font-weight: 600;
-      letter-spacing: 0.18em; text-transform: uppercase;
-      color: var(--fg3);
-    }
-
-    .security-value {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 15px; font-weight: 500;
-      color: var(--fg);
-    }
-
-    .security-desc {
-      font-size: 13px; font-weight: 300;
-      color: var(--fg2); line-height: 1.7; margin-top: 4px;
-    }
-
-    /* ── COMPARE ── */
-    .compare-table {
-      margin-top: 56px;
-      width: 100%;
-      border-collapse: collapse;
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      overflow: hidden;
-      font-size: 13px;
-      box-shadow: var(--shadow-far) 0px 12px 24px -12px;
-    }
-
-    .compare-table th {
-      padding: 16px 24px;
-      font-size: 10px; font-weight: 600;
-      letter-spacing: 0.16em; text-transform: uppercase;
-      color: var(--fg3);
-      background: var(--card-bg);
-      border-bottom: 1px solid var(--border);
-      text-align: left;
-    }
-
-    .compare-table th.us { color: var(--indigo2); }
-
-    .compare-table td {
-      padding: 16px 24px;
-      border-bottom: 1px solid var(--border);
-      background: var(--bg);
-    }
-
-    .compare-table tr:last-child td { border-bottom: none; }
-
     .check { color: var(--teal); font-weight: 600; }
-    .cross { color: var(--fg3); }
-
-    /* ── CTA ── */
-    .cta-section {
-      padding: 140px 56px;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-
+    .btn { display: inline-block; padding: 13px 32px; font-size: 13px; font-weight: 500; letter-spacing: 0.04em; border-radius: 4px; transition: all 0.2s; }
+    .btn-primary { background: var(--indigo); color: #fff; box-shadow: var(--shadow-far) 0px 8px 24px -6px; }
+    .btn-primary:hover { background: var(--indigo2); transform: translateY(-2px); box-shadow: var(--shadow-far) 0px 14px 32px -6px; }
+    .btn-ghost { border: 1px solid var(--border2); color: var(--fg2); background: transparent; }
+    .btn-ghost:hover { border-color: var(--indigo2); color: var(--indigo2); }
+    .cta-section { padding: 140px 56px; text-align: center; position: relative; overflow: hidden; }
     .cta-section::before {
-      content: '';
-      position: absolute;
-      inset: 0;
+      content: ''; position: absolute; inset: 0;
       background: radial-gradient(ellipse at center, rgba(79,82,200,0.10) 0%, transparent 60%);
       pointer-events: none;
     }
-
     .cta-title {
       font-family: 'Space Grotesk', sans-serif;
-      font-size: clamp(32px, 4vw, 56px);
-      font-weight: 300;
-      letter-spacing: -0.02em;
-      margin-bottom: 16px;
-      position: relative;
+      font-size: clamp(32px, 4vw, 56px); font-weight: 300;
+      letter-spacing: -0.02em; margin-bottom: 16px;
     }
-
-    .cta-sub {
-      font-size: 1.1rem; font-weight: 300;
-      color: var(--fg2); margin-bottom: 40px;
-      position: relative;
+    .cta-sub { font-size: 1.1rem; font-weight: 300; color: var(--fg2); margin-bottom: 40px; }
+    .form { max-width: 520px; margin: 40px auto 0; text-align: left; }
+    .form-group { margin-bottom: 16px; }
+    .form label { display: block; font-size: 12px; font-weight: 500; letter-spacing: 0.1em; color: var(--fg3); margin-bottom: 8px; }
+    .form input, .form select, .form textarea {
+      width: 100%; padding: 14px 16px; background: var(--card-bg);
+      border: 1px solid var(--border); color: var(--fg);
+      border-radius: 6px; font-family: 'Inter', sans-serif; font-size: 14px;
+      transition: border-color 0.2s;
     }
-
-    /* ── FOOTER ── */
+    .form input:focus, .form textarea:focus { outline: none; border-color: var(--indigo); }
+    .form ::placeholder { color: var(--fg3); opacity: 0.6; }
+    .submit-btn {
+      width: 100%; padding: 14px; background: var(--indigo);
+      color: #fff; border: none; border-radius: 6px;
+      font-family: 'Space Grotesk', sans-serif; font-size: 14px; font-weight: 500;
+      cursor: pointer; transition: background 0.2s;
+    }
+    .submit-btn:hover { background: var(--indigo2); }
+    .form-note { font-size: 12px; color: var(--fg3); text-align: center; margin-top: 12px; }
     footer {
-      border-top: 1px solid var(--border);
-      padding: 48px 56px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      max-width: 1100px; margin: 0 auto;
-      font-size: 12px; color: var(--fg3);
-      font-weight: 300;
+      border-top: 1px solid var(--border); padding: 48px 56px;
+      display: flex; justify-content: space-between; align-items: center;
+      max-width: 1100px; margin: 0 auto; font-size: 12px; color: var(--fg3); font-weight: 300;
     }
-
-    .footer-links { display: flex; gap: 28px; }
-    .footer-links a { transition: color 0.2s; }
-    .footer-links a:hover { color: var(--fg2); }
-
-    /* ── ANIMATIONS ── */
-    .reveal {
-      opacity: 0;
-      transform: translateY(24px);
-      transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    .pill {
+      display: inline-flex; align-items: center; gap: 7px;
+      font-size: 11px; font-weight: 500; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--fg2);
+      padding: 8px 14px; border: 1px solid var(--border2);
+      border-radius: 3px; background: var(--indigo-bg); backdrop-filter: blur(8px);
     }
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
+    .stat {
+      font-family: 'Space Grotesk', sans-serif; font-size: 32px; font-weight: 300; color: var(--fg);
     }
-
-    /* ── RESPONSIVE ── */
-    @media (max-width: 1024px) {
-      .hero-visual { display: none; }
-      #hero-canvas { width: 350px; height: 350px; opacity: 0.15; }
+    .stat span { color: var(--teal); }
+    .badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 6px 12px; background: var(--indigo-bg);
+      border: 1px solid var(--indigo); border-radius: 99px;
+      font-size: 11px; font-weight: 500; color: var(--indigo2);
     }
-
-    @media (max-width: 900px) {
-      .why-grid { grid-template-columns: 1fr; }
-      .pillars { grid-template-columns: repeat(2, 1fr); }
-      .props-grid { grid-template-columns: 1fr; }
-      .security-block { grid-template-columns: 1fr; grid-column: span 1; }
-      .compare-table { font-size: 12px; }
-      .compare-table th, .compare-table td { padding: 12px 16px; }
-      footer { flex-direction: column; gap: 16px; text-align: center; }
-    }
-
-    @media (max-width: 600px) {
+    @media (max-width: 768px) {
+      .section { padding: 80px 24px; }
       nav { padding: 0 24px; }
       .nav-links { display: none; }
-      #hero { padding: 140px 24px 80px; }
-      .section { padding: 80px 24px; }
-      .pillars { grid-template-columns: 1fr; }
-      .cta-section { padding: 100px 24px; }
+      .grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
-
 <nav>
   <a href="#" class="nav-logo">
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--indigo2)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M12 3 L20 7 V13 Q20 18 12 21 Q4 18 4 13 V7 Z"/>
-      <path d="M12 3 V21" opacity="0.3"/>
-      <path d="M4 7 Q12 11 20 7" opacity="0.5"/>
-    </svg>
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--indigo2)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 L20 7 V13 Q20 18 12 21 Q4 18 4 13 V7 Z"/><path d="M12 3 V21" opacity="0.3"/><path d="M4 7 Q12 11 20 7" opacity="0.5"/></svg>
     Veil
   </a>
   <div class="nav-right">
     <div class="nav-links">
-      <a href="https://spiritclawd.github.io/veil-landing/rwa.html" target="_blank" style="margin-left: 24px; color: var(--fg); text-decoration: none;">For Partners</a>
-    <a href="#why">Why Veil</a>
-      <a href="#properties">Properties</a>
-      <a href="#compare">Compare</a>
+      <a href="#problem">Problem</a>
+      <a href="#solution">Solution</a>
+      <a href="#use-cases">Use Cases</a>
+      <a href="https://veil.aircade.xyz/rwa.html" class="nav-cta" style="padding: 9px 22px;">For Partners</a>
     </div>
-    <button id="theme-toggle" aria-label="Toggle theme">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <circle cx="12" cy="12" r="5"/>
-        <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
-      </svg>
-    </button>
-    <a href="#cta" class="nav-cta">Request Access</a>
   </div>
 </nav>
 
-<!-- HERO -->
-<section id="hero">
-  <canvas id="hero-canvas"></canvas>
-  <div class="hero-visual">
-    <img src="https://v3b.fal.media/files/b/0a977523/R3gArpOWasYQAXhXmXKAh_QFcDq6QX.png" alt="Veil privacy infrastructure abstract visualization">
-  </div>
-
-  <div class="hero-tag">
-    <span class="hero-tag-dot"></span>
-    Privacy infrastructure for institutional assets
-  </div>
-
-  <h1 class="hero-title">
-    <div>Every asset.</div>
-    <div class="line2">
-      <span class="yours">Yours</span>
-      <span>and</span>
-      <span class="hidden-word" id="word-cycle">
-        <span class="word">sovereign</span>
-        <span class="veil"></span>
-      </span>
-      <span>.</span>
-    </div>
+<section style="min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding: 160px 56px 100px; max-width: 1100px; margin: 0 auto;">
+  <div class="label"><span class="badge">Now Live — Testnet</span></div>
+  <h1 class="title-lg" style="font-size: clamp(44px, 6vw, 82px); font-weight: 300; line-height: 1.06; letter-spacing: -0.03em; margin-bottom: 32px;">
+    Privacy for<br>Tokenized Assets
   </h1>
+  <p class="section-desc" style="font-size: 1.2rem; max-width: 580px;">
+    RWA platforms need privacy to attract institutional capital. Veil provides a drop-in module that keeps investor data and transaction details confidential while satisfying regulators.
+  </p>
+  <div class="hero-props" style="margin-top: 44px; display: flex; gap: 10px; flex-wrap: wrap;">
+    <span class="pill"><span class="check">●</span> Zero-knowledge proofs</span>
+    <span class="pill"><span class="check">●</span> Self-custodial</span>
+    <span class="pill"><span class="check">●</span> 2-week integration</span>
+    <span class="pill"><span class="check">●</span> No trusted setup</span>
+  </div>
+  <div class="hero-actions" style="margin-top: 48px; display: flex; gap: 14px;">
+    <a href="https://veil.aircade.xyz/rwa.html" class="btn-primary">Apply for Pilot</a>
+    <a href="#solution" class="btn-ghost">Read the Specs</a>
+  </div>
+</section>
 
-  <p class="hero-sub">
-    Quantum-resistant. Self-custodial. Impossible to break.
-    Veil is the privacy layer institutions use when exposure is not an option.
+<section id="problem" class="section" style="border-top: 1px solid var(--border);">
+  <div class="label">The Problem</div>
+  <h2 class="title-lg">On-chain Exposure Kills Institutional Adoption</h2>
+  <p class="section-desc" style="margin-top: 24px;">
+    Public blockchains are transparent by default. That's a problem when you're tokenizing private credit, real estate, or confidential loans.
   </p>
 
-  <div class="hero-properties">
-    <span class="property"><span class="property-dot"></span>Quantum-Resistant</span>
-    <span class="property"><span class="property-dot"></span>Self-Custodial</span>
-    <span class="property"><span class="property-dot"></span>Sub-5s Proofs</span>
-    <span class="property"><span class="property-dot"></span>Selective Disclosure</span>
+  <div class="grid" style="margin-top: 40px; border: none; box-shadow: none; background: transparent; display: grid; grid-template-columns: 1fr 1fr; gap: 40px;">
+    <div class="card" style="border-left: 3px solid var(--indigo);">
+      <div class="card-title">Regulatory Exposure</div>
+      <div class="card-body">
+        GDPR and data residency laws can be violated when investor PII and transaction data are permanently public.
+      </div>
+    </div>
+    <div class="card" style="border-left: 3px solid var(--teal);">
+      <div class="card-title">Investor Reluctance</div>
+      <div class="card-body">
+        HNWIs and funds won't participate if their positions, loan history, or wallet activity are visible to competitors and the public.
+      </div>
+    </div>
   </div>
 
-  <div class="hero-actions">
-    <a href="#cta" class="btn-primary">Request Access</a>
-    <a href="#why" class="btn-ghost">How it works</a>
-  </div>
-</section>
-
-<hr class="divider">
-
-<!-- WHY VEIL -->
-<section class="section" id="why">
-  <div class="label reveal">Why Veil</div>
-  <h2 class="title-lg reveal">Built for the moment when <span class="acc">privacy becomes survival</span></h2>
-  <p class="section-desc reveal">Institutions don't want anonymity. They want control. Veil gives you cryptographic proof that your assets are yours — without broadcasting your positions to the world.</p>
-
-  <div class="why-grid reveal">
-    <div class="why-card">
-      <div class="why-card-title">Not a mixer. Not a pool.</div>
-      <div class="why-card-body">Veil doesn't commingle funds or rely on liquidity pools. Your assets stay in your custody, protected by math, not trust.</div>
-    </div>
-    <div class="why-card">
-      <div class="why-card-title">Compliance-first design</div>
-      <div class="why-card-body">Selective disclosure lets you prove solvency, ownership, and history to auditors — without revealing sensitive positions to competitors.</div>
-    </div>
-    <div class="why-card">
-      <div class="why-card-title">Quantum-resistant today</div>
-      <div class="why-card-body">STWO-based proofs on Starknet use lattice-friendly commitments. When quantum computers arrive, your vaults remain sealed.</div>
-    </div>
+  <div class="card" style="margin-top: 24px; background: var(--bg2); border: none;">
+    <div class="card-title" style="font-size: 14px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--fg3); margin-bottom: 12px;">Result</div>
+    <p class="card-body" style="max-width: 700px;">
+      Platforms lose deal flow, face compliance risks, and can't scale to institutional volume. Privacy isn't optional — it's the gatekeeper to capital.
+    </p>
   </div>
 </section>
 
-<hr class="divider">
+<section id="solution" class="section" style="background: var(--bg2);">
+  <div class="label">The Solution</div>
+  <h2 class="title-lg">Veil: Privacy-by-Default for RWA</h2>
+  <p class="section-desc" style="margin-top: 24px;">
+    A modular privacy layer that plugs into existing RWA smart contracts. No need to migrate assets or rebuild your platform.
+  </p>
 
-<!-- PILLARS -->
-<section class="section">
-  <div class="label reveal">Architecture</div>
-  <h2 class="title-lg reveal">Four pillars. One <span class="acc">impossible to break</span> vault.</h2>
-
-  <div class="pillars reveal">
-    <div class="pillar">
-      <div class="pillar-icon">🔐</div>
-      <div class="pillar-title">Commitment Scheme</div>
-      <div class="pillar-desc">Pedersen commitments hide amounts while preserving algebraic structure for ZK verification.</div>
-    </div>
-    <div class="pillar">
-      <div class="pillar-icon">⚡</div>
-      <div class="pillar-title">STWO Prover</div>
-      <div class="pillar-desc">Circle-STARK based proofs verify in under 5 seconds — fast enough for real-time trading workflows.</div>
-    </div>
-    <div class="pillar">
-      <div class="pillar-icon">🔗</div>
-      <div class="pillar-title">Starknet Settlement</div>
-      <div class="pillar-desc">Proofs settle on Ethereum L1 via Starknet. Inherited security, institutional-grade finality.</div>
-    </div>
-    <div class="pillar">
-      <div class="pillar-icon">🛡️</div>
-      <div class="pillar-title">Selective Disclosure</div>
-      <div class="pillar-desc">Reveal exactly what you must, to exactly whom you choose. Nothing more, ever.</div>
-    </div>
-  </div>
-</section>
-
-<hr class="divider">
-
-<!-- PROPERTIES -->
-<section class="section" id="properties">
-  <div class="label reveal">Properties</div>
-  <h2 class="title-lg reveal">Specifications that meet <span class="acc">institutional bar</span></h2>
-
-  <div class="props-grid reveal">
-    <div class="prop-card">
-      <div class="prop-num">01 / SPEED</div>
-      <div class="prop-title">Sub-5s proof generation</div>
-      <div class="prop-desc">Most ZK systems measure proof time in minutes. Veil measures it in heartbeats. Circle-STARK recursion brings STWO proofs to trading-speed latency.</div>
-      <div class="prop-stat">
-        <span class="prop-stat-val">4.2<span>s</span></span>
-        <span class="prop-stat-label">avg proof time</span>
+  <div class="grid" style="margin-top: 40px; border: none; box-shadow: none; background: transparent; display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+    <div class="card">
+      <div class="card-title">Private KYC Attestations</div>
+      <div class="card-body">
+        Investors prove they're accredited without revealing identity, net worth, or jurisdiction. Zero-knowledge proofs accepted globally.
       </div>
     </div>
-    <div class="prop-card">
-      <div class="prop-num">02 / SECURITY</div>
-      <div class="prop-title">Quantum-resistant commitments</div>
-      <div class="prop-desc">Pedersen over Jubjub curves are quantum-vulnerable. Veil's commitment scheme is designed for post-quantum migration paths without vault reconstruction.</div>
-      <div class="prop-stat">
-        <span class="prop-stat-val">256<span>bit</span></span>
-        <span class="prop-stat-label">commitment entropy</span>
+    <div class="card">
+      <div class="card-title">Transaction Confidentiality</div>
+      <div class="card-body">
+        Loan amounts, interest rates, and asset holdings are hidden from public view while solvency remains mathematically provable.
       </div>
     </div>
-    <div class="prop-card">
-      <div class="prop-num">03 / CUSTODY</div>
-      <div class="prop-title">Self-custodial by default</div>
-      <div class="prop-desc">No multi-sig committees. No trusted setup ceremonies with anonymous participants. Your keys, your vault, your proofs. Auditable, not administered.</div>
-      <div class="prop-stat">
-        <span class="prop-stat-val">100<span>%</span></span>
-        <span class="prop-stat-label">user-controlled</span>
+    <div class="card">
+      <div class="card-title">Audit-Ready Receipts</div>
+      <div class="card-body">
+        Regulator-accessible compliance logs that can be shared with authorized parties without public disclosure.
       </div>
     </div>
-    <div class="prop-card">
-      <div class="prop-num">04 / COMPLIANCE</div>
-      <div class="prop-title">Selective disclosure</div>
-      <div class="prop-desc">Generate zero-knowledge proofs of solvency, ownership history, or regulatory compliance — without revealing wallet addresses, counterparties, or positions.</div>
-      <div class="prop-stat">
-        <span class="prop-stat-val">0<span>leak</span></span>
-        <span class="prop-stat-label">unwanted data exposure</span>
-      </div>
-    </div>
-    <div class="security-block">
-      <div class="security-item">
-        <span class="security-label">Cryptography</span>
-        <span class="security-value">STWO Circle-STARKs</span>
-        <span class="security-desc">Recursive proof composition with 128-bit security parameter</span>
-      </div>
-      <div class="security-item">
-        <span class="security-label">Settlement</span>
-        <span class="security-value">Starknet → Ethereum L1</span>
-        <span class="security-desc">Proofs verified on L2, state diffs published to L1</span>
-      </div>
-      <div class="security-item">
-        <span class="security-label">Auditing</span>
-        <span class="security-value">On-chain attestations</span>
-        <span class="security-desc">Every proof commitment is permanently verifiable</span>
+    <div class="card">
+      <div class="card-title">Self-Custodial Architecture</div>
+      <div class="card-body">
+        No trusted intermediary holds secrets. Private data never leaves the user's device; proofs are generated client-side.
       </div>
     </div>
   </div>
 </section>
 
-<hr class="divider">
+<section id="use-cases" class="section">
+  <div class="label">Use Cases</div>
+  <h2 class="title-lg">Built for Leading RWA Platforms</h2>
+  <p class="section-desc" style="margin-top: 24px;">
+    See how Veil integrates into existing tokenization stacks to unlock institutional capital.
+  </p>
 
-<!-- COMPARE -->
-<section class="section" id="compare">
-  <div class="label reveal">Comparison</div>
-  <h2 class="title-lg reveal">What makes Veil <span class="acc">different</span></h2>
-
-  <table class="compare-table reveal">
-    <thead>
-      <tr>
-        <th>Capability</th>
-        <th>Traditional Custody</th>
-        <th>Mixers / Pools</th>
-        <th class="us">Veil</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>Self-custodial</td>
-        <td class="cross">—</td>
-        <td class="check">✓</td>
-        <td class="check">✓</td>
-      </tr>
-      <tr>
-        <td>Quantum-resistant</td>
-        <td class="cross">—</td>
-        <td class="cross">—</td>
-        <td class="check">✓</td>
-      </tr>
-      <tr>
-        <td>Compliance-ready</td>
-        <td class="check">✓</td>
-        <td class="cross">—</td>
-        <td class="check">✓</td>
-      </tr>
-      <tr>
-        <td>No liquidity pooling</td>
-        <td class="check">✓</td>
-        <td class="cross">—</td>
-        <td class="check">✓</td>
-      </tr>
-      <tr>
-        <td>Selective disclosure</td>
-        <td class="cross">—</td>
-        <td class="cross">—</td>
-        <td class="check">✓</td>
-      </tr>
-      <tr>
-        <td>Sub-5s proof time</td>
-        <td>N/A</td>
-        <td class="cross">—</td>
-        <td class="check">✓</td>
-      </tr>
-    </tbody>
-  </table>
-</section>
-
-<!-- CTA -->
-<section class="cta-section" id="cta">
-  <h2 class="cta-title">Every asset. Yours and sovereign.</h2>
-  <p class="cta-sub">Request early access to the Veil testnet.</p>
-  <div class="hero-actions" style="justify-content: center;">
-    <a href="mailto:hello@veil.aircade.xyz" class="btn-primary">Request Access</a>
-    <a href="https://github.com/karlostoteles/veil" class="btn-ghost">Read the Code</a>
+  <div class="grid" style="margin-top: 32px; border: none; box-shadow: none; background: transparent; display: grid; grid-template-columns: 1fr 1fr; gap: 1px;">
+    <div class="card">
+      <div class="card-title">Centrifuge</div>
+      <div class="card-body">
+        Private credit pools with anonymous investor participation. KYC proofs satisfy compliance while keeping investor identities hidden.
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-title">Maple Finance</div>
+      <div class="card-body">
+        Institutional loan positions stay confidential. Solvency proofs remain verifiable on-chain without revealing exposure size.
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-title">Goldfinch Prime</div>
+      <div class="card-body">
+        Private credit fund allocations obscured from competitors. Audit receipts available to LPs via secure channels.
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-title">Ondo / Midas / Plume</div>
+      <div class="card-body">
+        Tokenized treasuries and RWA L1s integrate Veil as a privacy middleware layer — minimal smart contract changes.
+      </div>
+    </div>
   </div>
 </section>
 
-<!-- FOOTER -->
+<section class="cta-section">
+  <h2 class="cta-title">Start Your Pilot</h2>
+  <p class="cta-sub">
+    We're selecting 5 RWA platforms for a free 3-month integration pilot.<br>
+    Includes SDK, technical support, and joint announcement.
+  </p>
+  <form class="form" action="mailto:carlosdelafiguera@gmail.com" method="POST" enctype="text/plain">
+    <div class="form-group">
+      <label>Company</label>
+      <input type="text" name="company" placeholder="Your company name" required>
+    </div>
+    <div class="form-group">
+      <label>Full Name</label>
+      <input type="text" name="name" placeholder="Your name" required>
+    </div>
+    <div class="form-group">
+      <label>Work Email</label>
+      <input type="email" name="email" placeholder="you@company.com" required>
+    </div>
+    <div class="form-group">
+      <label>Use Case</label>
+      <textarea name="use_case" rows="3" placeholder="Which privacy capability do you need most? investor anonymity, transaction hiding, audit receipts..."></textarea>
+    </div>
+    <button type="submit" class="submit-btn">Apply for Pilot</button>
+    <p class="form-note">We respond within 24 hours. NDA available.</p>
+  </form>
+</section>
+
 <footer>
   <span>Veil Privacy Infrastructure © 2026</span>
-  <div class="footer-links">
-    <a href="https://veil.aircade.xyz">Live Demo</a>
-    <a href="https://github.com/karlostoteles/veil">GitHub</a>
-    <a href="mailto:hello@veil.aircade.xyz">Contact</a>
+  <div>
+    <a href="https://veil.aircade.xyz/rwa.html" style="margin-right: 24px;">Partner Portal</a>
+    <a href="mailto:carlosdelafiguera@gmail.com">Contact</a>
   </div>
 </footer>
 
 <script>
-  /* ── THEME TOGGLE ── */
-  const toggle = document.getElementById('theme-toggle');
-  const html = document.documentElement;
-  const stored = localStorage.getItem('veil-theme');
-  if (stored) html.setAttribute('data-theme', stored);
-
-  toggle.addEventListener('click', () => {
-    const next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-    html.setAttribute('data-theme', next);
-    localStorage.setItem('veil-theme', next);
-  });
-
-  /* ── WORD VEIL ANIMATION ── */
-  const words = ['sovereign', 'invisible', 'unbreakable', 'proven', 'sealed'];
-  let wi = 0;
-  const wordEl = document.querySelector('#word-cycle');
-  const wordSpan = wordEl.querySelector('.word');
-
-  function cycleWord() {
-    wordEl.classList.add('veiling');
-    setTimeout(() => {
-      wi = (wi + 1) % words.length;
-      wordSpan.textContent = words[wi];
-      wordEl.classList.remove('veiling');
-      wordEl.classList.add('unveiling');
-      setTimeout(() => wordEl.classList.remove('unveiling'), 300);
-    }, 300);
-  }
-  setInterval(cycleWord, 2800);
-
-  /* ── OCTAHEDRON CANVAS ── */
-  const canvas = document.getElementById('hero-canvas');
-  const ctx = canvas.getContext('2d');
-  const dpr = window.devicePixelRatio || 1;
-  const size = 480;
-  canvas.width = size * dpr;
-  canvas.height = size * dpr;
-  canvas.style.width = size + 'px';
-  canvas.style.height = size + 'px';
-  ctx.scale(dpr, dpr);
-
-  const verts = [
-    [0, -1, 0], [1, 0, 1], [1, 0, -1], [-1, 0, -1], [-1, 0, 1], [0, 1, 0]
-  ];
-  const edges = [
-    [0,1],[0,2],[0,3],[0,4],[1,2],[2,3],[3,4],[4,1],[1,5],[2,5],[3,5],[4,5]
-  ];
-
-  let angleX = 0, angleY = 0;
-  function project(v) {
-    const s = 140;
-    const x = v[0], y = v[1], z = v[2];
-    const rx = x * Math.cos(angleY) - z * Math.sin(angleY);
-    const rz = x * Math.sin(angleY) + z * Math.cos(angleY);
-    const ry = y * Math.cos(angleX) - rz * Math.sin(angleX);
-    const rz2 = y * Math.sin(angleX) + rz * Math.cos(angleX);
-    return [rx * s / (4 - rz2) + size/2, ry * s / (4 - rz2) + size/2];
-  }
-
-  function draw() {
-    ctx.clearRect(0, 0, size, size);
-    const isDark = html.getAttribute('data-theme') === 'dark';
-    ctx.strokeStyle = isDark ? 'rgba(79,82,200,0.35)' : 'rgba(79,82,200,0.20)';
-    ctx.lineWidth = 1.2;
-
-    for (const [a, b] of edges) {
-      const p1 = project(verts[a]);
-      const p2 = project(verts[b]);
-      ctx.beginPath();
-      ctx.moveTo(p1[0], p1[1]);
-      ctx.lineTo(p2[0], p2[1]);
-      ctx.stroke();
-    }
-
-    angleX += 0.003;
-    angleY += 0.005;
-    requestAnimationFrame(draw);
-  }
-  draw();
-
-  /* ── SCROLL REVEAL ── */
-  const reveals = document.querySelectorAll('.reveal');
+  const reveals = document.querySelectorAll('.card, .section, .title-lg, .hero-props');
   const obs = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-  }, { threshold: 0.12 });
-  reveals.forEach(el => obs.observe(el));
+    entries.forEach(e => { if (e.isIntersecting) e.target.style.opacity = 1; });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => { el.style.opacity = 0; el.style.transition = 'opacity 0.6s'; obs.observe(el); });
 </script>
-
-</body>
-</html>
+</body></html>
