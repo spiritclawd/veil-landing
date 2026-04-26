@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Veil — Provable Privacy Infrastructure</title>
-  <meta name="description" content="Veil provides privacy for tokenized asset platforms. Keep investor data confidential while meeting compliance requirements. SDK integration in 2 weeks."/>
-  <link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImxnIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzdiN2ZkZSIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiM0ZjUyYzgiLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgPC9kZWZzPgogIDxyZWN0IHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIgcng9IjgiIGZpbGw9InVybCgjbGcpIi8+CiAgPHBhdGggZD0iTTEwIDggTDE2IDE2IEwxMCAxNiBaIiBmaWxsPSJub25lIiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjIuNSIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPgogIDxwYXRoIGQ9Ik0yMiA4IEwxNiAxNiBMMjIgMTYgWiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJ3aGl0ZSIgc3Ryb2tlLXdpZHRoPSIyLjUiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KICA8Y2lyY2xlIGN4PSIxNiIgY3k9IjIwIiByPSIyIiBmaWxsPSJ3aGl0ZSIgb3BhY2l0eT0iMC45Ii8+Cjwvc3ZnPg=="/>
-  <link rel="apple-touch-icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImxnIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzdiN2ZkZSIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiM0ZjUyYzgiLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgPC9kZWZzPgogIDxyZWN0IHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIgcng9IjgiIGZpbGw9InVybCgjbGcpIi8+CiAgPHBhdGggZD0iTTEwIDggTDE2IDE2IEwxMCAxNiBaIiBmaWxsPSJub25lIiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjIuNSIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPgogIDxwYXRoIGQ9Ik0yMiA4IEwxNiAxNiBMMjIgMTYgWiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJ3aGl0ZSIgc3Ryb2tlLXdpZHRoPSIyLjUiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KICA8Y2lyY2xlIGN4PSIxNiIgY3k9IjIwIiByPSIyIiBmaWxsPSJ3aGl0ZSIgb3BhY2l0eT0iMC45Ii8+Cjwvc3ZnPg=="/>
+  <title>Veil — On-Chain Compliance Infrastructure</title>
+  <meta name="description" content="Veil provides on-chain compliance for tokenized assets. Privacy by default, auditability on demand. Self-custodial attestations for RWA platforms."/>
+  <link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJsb2ciIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMCUiIHkyPSIxMDAlIj48c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjN2I3ZmRlIi8+PHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjNGY1MmM4Ii8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+PHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iOCIgaWQ9ImxhdyIgZmlsbD1idXR0b24gcmVjdCcgZmlsbD0iKiIgc3Ryb2tlPSJ3aGl0ZSIgc3Ryb2tlLXdpZHRoPSIyLjUiLz48cGF0aCBkPSJNMTAgOCBMMTYgMTYgTDEwIDE2IFoiIGZpbGw9Im5vbmUiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS13aWR0aD0iMi41IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz48cGF0aCBkPSJNMjIgOCBMMTYgMTYgTDIyIDE2IFoiIGZpbGw9Im5vbmUiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS13aWR0aD0iMi41IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz48Y2lyY2xlIGN4PSIxNiIgY3k9IjIwIiByPSIyIiBmaWxsPSJ3aGl0ZSIgb3BhY2l0eT0iMC45Ii8+PC9zdmc+"/>
+  <link rel="apple-touch-icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PGNpcmNsZSBjeD0iMTYiIGN5PSIxMiIgcj0iNSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjN2I3ZmRlIiBzdHJva2Utd2lkdGg9IjIiLz48cGF0aCBkPSJNMTIgMXJhMnozMXYyaDRmMkgydjJjNCAwIDUgMTEgMjAgNWw1LTUgMS40IDAuM2wuMyAzbC4zLTFsMiAwIDIuMS00eiIgZmlsbD0iI2I5YjgyOSIgc3Ryb2tlPSIjN2I3ZmRlIiBzdHJva2Utd2lkdGg9IjIiLz48L3N2Zz4="/>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
@@ -180,7 +180,6 @@
     }
   </style>
 </head>
-<body></head>
 <body>
 <nav>
   <a href="#" class="nav-logo">
@@ -212,13 +211,13 @@
     <span id="rotating-title"></span><span class="cursor"></span><br>for Tokenized Assets
   </h1>
   <p class="section-desc" style="font-size: 1.2rem; max-width: 580px;">
-    RWA platforms need privacy to attract institutional capital. Veil provides a drop-in module that keeps investor data and transaction details confidential while satisfying regulators.
+    RWA platforms need compliance to attract institutional capital. Veil provides an on-chain attestation layer that keeps investor data private while satisfying regulators — no transfers, no custodians.
   </p>
   <div class="hero-props">
-    <span class="pill"><span class="check">●</span> Zero-Knowledge Proofs</span>
     <span class="pill"><span class="check">●</span> Self Custodial</span>
+    <span class="pill"><span class="check">●</span> On Chain Verification</span>
+    <span class="pill"><span class="check">●</span> Privacy by Default</span>
     <span class="pill"><span class="check">●</span> 2 Week Integration</span>
-    <span class="pill"><span class="check">●</span> No Trusted Setup</span>
   </div>
   <div class="hero-actions" style="margin-top: 48px; display: flex; gap: 14px;">
     <a href="https://veil.aircade.xyz/rwa.html" class="btn-primary">Apply for Pilot</a>
@@ -228,109 +227,102 @@
 
 <section id="problem" class="section" style="border-top: 1px solid var(--border);">
   <div class="label">Problem</div>
-  <h2 class="title-lg">On-Chain Exposure Kills Institutional Adoption</h2>
+  <h2 class="title-lg">Compliance Cannot Be Outsourced</h2>
   <p class="section-desc" style="margin-top: 24px;">
-    Public blockchains are transparent by default. That is a problem when tokenizing private credit, real estate or confidential loans.
+    RWA platforms rely on off-chain KYC providers that create single points of failure, data leakage risk and recurring fees. On-chain verification has been impossible at scale.
   </p>
 
   <div class="grid" style="margin-top: 40px; border: none; box-shadow: none; background: transparent; display: grid; grid-template-columns: 1fr 1fr; gap: 40px;">
     <div class="card" style="border-left: 3px solid var(--indigo);">
-      <div class="card-title">Regulatory Exposure</div>
+      <div class="card-title">Off Chain Dependency</div>
       <div class="card-body">
-        GDPR and data residency laws can be violated when investor identity and transaction data are permanently public.
+        Traditional KYC providers hold user data, create custody risk and require constant renewal. Platforms cannot verify compliance without revealing sensitive information.
       </div>
     </div>
     <div class="card" style="border-left: 3px solid var(--teal);">
-      <div class="card-title">Investor Reluctance</div>
+      <div class="card-title">No On Chain Standard</div>
       <div class="card-body">
-        HNWIs and funds will not participate if their positions or wallet activity are visible to competitors and the public.
+        Most protocols architecturally cannot embed compliance directly into the chain. Attestations remain off-chain, unverifiable and non composable.
       </div>
     </div>
-  </div>
-
-  <div class="card" style="margin-top: 24px; background: var(--bg2); border: none;">
-    <div class="card-title" style="font-size: 14px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--fg3); margin-bottom: 12px;">Result</div>
-    <p class="card-body" style="max-width: 700px;">
-      Platforms lose deal flow, face compliance risks and cannot scale to institutional volume. Privacy is not optional — it is the gatekeeper to capital.
-    </p>
   </div>
 </section>
 
 <section id="solution" class="section" style="background: var(--bg2);">
   <div class="label">Solution</div>
-  <h2 class="title-lg">Veil: Privacy-by-Default for RWA</h2>
+  <h2 class="title-lg">Veil: On-Chain Compliance Layer</h2>
   <p class="section-desc" style="margin-top: 24px;">
-    A modular privacy layer that plugs into existing RWA smart contracts. No need to migrate assets or rebuild your platform.
+    A self-custodial attestation protocol built for Starknet. Privacy by default, auditability on demand — no transfers, no custodians, no middlemen.
   </p>
 
   <div class="grid" style="margin-top: 40px; border: none; box-shadow: none; background: transparent; display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
     <div class="card">
-      <div class="card-title">Private KYC Attestations</div>
+      <div class="card-title">Self Custodial Attestations</div>
       <div class="card-body">
-        Investors prove accreditation without revealing identity, net worth or jurisdiction. Zero-knowledge proofs accepted globally.
+        Investors hold their own compliance proofs. No central provider stores data; attestations are anchored on-chain and owned by the user.
       </div>
     </div>
     <div class="card">
-      <div class="card-title">Transaction Confidentiality</div>
+      <div class="card-title">Privacy by Default</div>
       <div class="card-body">
-        Loan amounts, interest rates and holdings are hidden from public view while solvency remains mathematically provable.
+        Attestation data remains private. Only the holder can selectively reveal it to auditors — a peephole model built on Starknet privacy primitives.
       </div>
     </div>
     <div class="card">
-      <div class="card-title">Audit-Ready Receipts</div>
+      <div class="card-title">No Transfer Required</div>
       <div class="card-body">
-        Regulator-accessible compliance logs that can be shared with authorized parties without public disclosure.
+        Compliance stays with the user account. RWA platforms verify attestations directly from the holder without needing to move assets or involve intermediaries.
       </div>
     </div>
     <div class="card">
-      <div class="card-title">Self Custodial Architecture</div>
+      <div class="card-title">On Chain Verifiability</div>
       <div class="card-body">
-        No trusted intermediary holds secrets. Private data never leaves the user device; proofs are generated client-side.
+        Any auditor or platform can cryptographically verify compliance status on Starknet — no off-chain reconciliation, no trusted setup.
       </div>
     </div>
   </div>
 </section>
 
 <section id="use-cases" class="section">
-  <div class="label">For Leading Platforms</div>
-  <h2 class="title-lg">How RWA Companies Use Veil</h2>
+  <div class="label">Use Cases</div>
+  <h2 class="title-lg">Built for STRK 20 and NFT RWA</h2>
   <p class="section-desc" style="margin-top: 24px;">
-    See how Veil integrates into existing tokenization stacks to unlock institutional capital.
+    Veil works across token standards — the same compliance layer for both fungible and non-fungible tokenized assets.
   </p>
 
   <div class="grid" style="margin-top: 32px; border: none; box-shadow: none; background: transparent; display: grid; grid-template-columns: 1fr 1fr; gap: 1px;">
     <div class="card">
-      <div class="card-title">Centrifuge</div>
+      <div class="card-title">STRK 20 Tokens</div>
       <div class="card-body">
-        Private credit pools with anonymous investor participation. KYC proofs satisfy compliance while keeping identities hidden.
+        Private credit, tokenized treasuries and fund shares comply on-chain without exposing holder identities or transaction details.
       </div>
     </div>
     <div class="card">
-      <div class="card-title">Maple Finance</div>
+      <div class="card-title">NFT RWA</div>
       <div class="card-body">
-        Institutional loan positions stay confidential. Solvency proofs remain verifiable on-chain without revealing exposure size.
+        Real estate NFTs, art tokens and collectibles carry verifiable compliance data — all private, all on-chain.
       </div>
     </div>
     <div class="card">
-      <div class="card-title">Goldfinch Prime</div>
+      <div class="card-title">RWA Platforms</div>
       <div class="card-body">
-        Private credit fund allocations obscured from competitors. Audit receipts available to limited partners via secure channels.
+        Centrifuge, Maple, Goldfinch and others embed Veil as their compliance primitive — public verifiability without public exposure.
       </div>
     </div>
     <div class="card">
-      <div class="card-title">Ondo, Midas, Plume</div>
+      <div class="card-title">Audit and Regulation</div>
       <div class="card-body">
-        Tokenized treasuries and RWA layer-ones integrate Veil as privacy middleware — minimal smart contract changes required.
+        Authorized parties request selective disclosure. Compliance history is cryptographically chained and tamper proof.
       </div>
     </div>
   </div>
 </section>
 
 <section class="cta-section">
-  <h2 class="cta-title">Start Your Pilot Integration</h2>
+  <h2 class="cta-title">Deploy Compliance On Chain</h2>
   <p class="cta-sub">
-    We are selecting five RWA platforms for a free three-month pilot.<br>
-    Includes SDK, technical support and a joint announcement.
+    We are selecting five RWA platforms for a free three month pilot.<br>
+    Full integration support, SDK and joint announcement included.
   </p>
   <form class="form" action="mailto:carlosdelafiguera@gmail.com" method="POST" enctype="text/plain">
     <div class="form-group">
@@ -347,7 +339,7 @@
     </div>
     <div class="form-group">
       <label>Use Case</label>
-      <textarea name="use_case" rows="3" placeholder="Which privacy capability do you need most? investor anonymity, transaction hiding, audit receipts..."></textarea>
+      <textarea name="use_case" rows="3" placeholder="What asset type are you tokenizing? STRK 20, NFT, or other RWA?"></textarea>
     </div>
     <button type="submit" class="submit-btn">Apply for Pilot</button>
     <p class="form-note">We respond within 24 hours. NDA available.</p>
@@ -355,7 +347,7 @@
 </section>
 
 <footer>
-  <span>Veil Privacy Infrastructure © 2026</span>
+  <span>Veil Compliance Infrastructure © 2026</span>
   <div>
     <a href="https://veil.aircade.xyz/rwa.html" style="margin-right: 24px;">Partner Portal</a>
     <a href="mailto:carlosdelafiguera@gmail.com">Contact</a>
@@ -363,7 +355,6 @@
 </footer>
 
 <script>
-  // Theme toggle
   const html = document.documentElement;
   const toggle = document.getElementById('theme-toggle');
   const stored = localStorage.getItem('veil-theme') || 'dark';
@@ -374,16 +365,14 @@
     localStorage.setItem('veil-theme', next);
   });
 
-  // Typing animation for rotating title
   const titleEl = document.getElementById('rotating-title');
-  const words = ['Privacy', 'Compliance'];
+  const words = ['Compliance', 'Privacy'];
   let wordIndex = 0;
   let charIndex = 0;
   let isDeleting = false;
 
   function type() {
     const currentWord = words[wordIndex];
-    
     if (isDeleting) {
       titleEl.textContent = currentWord.substring(0, charIndex - 1);
       charIndex--;
@@ -391,22 +380,19 @@
       titleEl.textContent = currentWord.substring(0, charIndex + 1);
       charIndex++;
     }
-
     if (!isDeleting && charIndex === currentWord.length) {
       isDeleting = true;
-      setTimeout(type, 2000); // pause at end
+      setTimeout(type, 2000);
     } else if (isDeleting && charIndex === 0) {
       isDeleting = false;
       wordIndex = (wordIndex + 1) % words.length;
-      setTimeout(type, 500); // pause before next word
+      setTimeout(type, 500);
     } else {
       setTimeout(type, isDeleting ? 60 : 120);
     }
   }
-
   setTimeout(type, 1000);
 
-  // Fade-in reveals
   const reveals = document.querySelectorAll('.card, .section, .title-lg, .hero-props');
   const obs = new IntersectionObserver((entries) => {
     entries.forEach(e => { if (e.isIntersecting) e.target.style.opacity = 1; });
