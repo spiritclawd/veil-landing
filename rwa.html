@@ -1,0 +1,473 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Veil for RWA — Privacy Layer for Tokenized Assets</title>
+  <meta name="description" content="Veil is the privacy layer for RWA platforms. Enable ZK-KYC, transaction privacy, and audit receipts for tokenized assets. Apply for pilot integration."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #ffffff;
+      --text: #111111;
+      --text-light: #555555;
+      --accent: #c9a87c;
+      --border: #e5e5e5;
+      --muted: #f7f7f7;
+      --success: #2d6a4f;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      padding: 0;
+    }
+    .container { max-width: 900px; margin: 0 auto; padding: 0 24px; }
+    
+    /* Header */
+    header {
+      padding: 32px 0;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 24px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+    .logo span { color: var(--accent); }
+    .back-link {
+      font-size: 14px;
+      color: var(--text-light);
+      text-decoration: none;
+    }
+    .back-link:hover { color: var(--accent); }
+    
+    /* Hero */
+    .hero {
+      padding: 80px 0 60px;
+      text-align: center;
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 42px;
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 20px;
+      letter-spacing: -0.02em;
+    }
+    .hero p {
+      font-size: 18px;
+      color: var(--text-light);
+      max-width: 700px;
+      margin: 0 auto 32px;
+    }
+    .pill {
+      display: inline-block;
+      background: var(--muted);
+      padding: 6px 16px;
+      border-radius: 100px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-light);
+      margin-bottom: 24px;
+    }
+    
+    /* Problem */
+    .problem {
+      background: var(--muted);
+      padding: 48px;
+      margin: 0 0 64px;
+      border-left: 4px solid var(--accent);
+    }
+    .problem h2 {
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-light);
+      margin-bottom: 24px;
+      font-weight: 600;
+    }
+    .problem ul {
+      list-style: none;
+    }
+    .problem li {
+      font-size: 17px;
+      margin-bottom: 16px;
+      padding-left: 28px;
+      position: relative;
+    }
+    .problem li::before {
+      content: "•";
+      position: absolute;
+      left: 8px;
+      color: var(--accent);
+      font-size: 20px;
+    }
+    
+    /* Solution */
+    .solution { margin-bottom: 64px; }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 28px;
+      margin-bottom: 20px;
+    }
+    .lead {
+      font-size: 17px;
+      color: var(--text-light);
+      margin-bottom: 32px;
+      max-width: 720px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      margin-top: 32px;
+    }
+    .capabilities .cap {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 15px;
+      margin-bottom: 16px;
+    }
+    .cap::before {
+      content: "✓";
+      color: var(--accent);
+      font-weight: 700;
+      font-size: 16px;
+    }
+    .cap strong { color: var(--text); }
+    
+    .timeline {
+      background: var(--muted);
+      padding: 28px;
+      border-radius: 12px;
+    }
+    .timeline h3 {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-light);
+      margin-bottom: 20px;
+      font-weight: 600;
+    }
+    .timeline ol {
+      margin: 0;
+      padding-left: 20px;
+    }
+    .timeline li {
+      margin-bottom: 12px;
+      font-size: 14px;
+    }
+    .timeline li strong {
+      color: var(--text);
+    }
+    
+    /* Partners Table */
+    .partners { margin-bottom: 64px; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+    }
+    th {
+      text-align: left;
+      padding: 14px 16px;
+      border-bottom: 2px solid var(--text);
+      font-weight: 600;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-light);
+    }
+    td {
+      padding: 16px;
+      border-bottom: 1px solid var(--border);
+    }
+    tr:last-child td { border-bottom: none; }
+    .company { font-weight: 600; }
+    .vertical {
+      font-size: 12px;
+      color: var(--text-light);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    
+    /* Why Now */
+    .why-now {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-bottom: 64px;
+    }
+    .reason {
+      padding: 28px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+    }
+    .reason h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 17px;
+      margin-bottom: 12px;
+    }
+    .reason p {
+      font-size: 14px;
+      color: var(--text-light);
+      line-height: 1.6;
+    }
+    
+    /* CTA / Form */
+    .cta {
+      background: var(--text);
+      color: var(--bg);
+      padding: 64px 48px;
+      border-radius: 16px;
+      text-align: center;
+      margin-bottom: 80px;
+    }
+    .cta h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 32px;
+      margin-bottom: 12px;
+    }
+    .cta p {
+      font-size: 16px;
+      opacity: 0.8;
+      margin-bottom: 32px;
+      max-width: 540px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .form {
+      max-width: 480px;
+      margin: 0 auto;
+      text-align: left;
+    }
+    .form-group {
+      margin-bottom: 16px;
+    }
+    .form label {
+      display: block;
+      font-size: 13px;
+      font-weight: 500;
+      margin-bottom: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      opacity: 0.9;
+    }
+    .form input, .form select, .form textarea {
+      width: 100%;
+      padding: 14px 16px;
+      border: 1px solid rgba(255,255,255,0.2);
+      background: rgba(255,255,255,0.05);
+      color: white;
+      border-radius: 8px;
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+    }
+    .form input::placeholder, .form textarea::placeholder {
+      color: rgba(255,255,255,0.5);
+    }
+    .form input:focus, .form textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+    }
+    .submit-btn {
+      width: 100%;
+      padding: 16px;
+      background: var(--accent);
+      color: var(--text);
+      border: none;
+      border-radius: 8px;
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 8px;
+    }
+    .submit-btn:hover {
+      opacity: 0.9;
+    }
+    .form-footer {
+      font-size: 12px;
+      opacity: 0.6;
+      margin-top: 16px;
+      text-align: center;
+    }
+    
+    /* Footer */
+    footer {
+      padding: 48px 0;
+      border-top: 1px solid var(--border);
+      text-align: center;
+      font-size: 14px;
+      color: var(--text-light);
+    }
+    .contact {
+      margin-bottom: 16px;
+    }
+    .contact a {
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 500;
+    }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 32px; }
+      .grid { grid-template-columns: 1fr; gap: 32px; }
+      .why-now { grid-template-columns: 1fr; }
+      .problem { padding: 32px; }
+      .cta { padding: 48px 32px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="container">
+    <div class="logo">Veil <span>Protocol</span></div>
+    <a href="https://veil.aircade.xyz/" class="back-link">← Main Site</a>
+  </header>
+
+  <main class="container">
+
+    <section class="hero">
+      <div class="pill">For RWA Partners</div>
+      <h1>The Privacy Layer for Tokenized Assets</h1>
+      <p>
+        Veil enables RWA platforms to meet compliance requirements without exposing sensitive investor and originator data. ZK-powered privacy for the institutional on-chain economy.
+      </p>
+    </section>
+
+    <section class="problem">
+      <h2>The Problem</h2>
+      <ul>
+        <li><strong>Regulatory risk:</strong> GDPR/CCPA exposure when investor KYC and asset data live on-chain in plaintext</li>
+        <li><strong>Investor reluctance:</strong> High-net-worth individuals and funds won't participate if wallet history and positions are public</li>
+        <li><strong>Competitive leakage:</strong> Loan terms, interest rates, covenants, and asset composition become visible to competitors</li>
+      </ul>
+    </section>
+
+    <section class="solution">
+      <h2 class="section-title">Our Solution</h2>
+      <p class="lead">
+        Veil is a drop-in ZK-privacy module for RWA platforms. Prove compliance without revealing data. Integration in weeks, not months.
+      </p>
+
+      <div class="grid">
+        <div class="capabilities">
+          <div class="cap"><strong>ZK-KYC</strong> — Prove accredited investor status without revealing identity, net worth, or source of funds</div>
+          <div class="cap"><strong>Transaction Privacy</strong> — Hide loan amounts, interest rates, and asset holdings while proving solvency and collateralization</div>
+          <div class="cap"><strong>Audit Receipts</strong> — Generate cryptographically signed compliance records for regulators (future: anchor to Patronaige verification layer)</div>
+          <div class="cap"><strong>2-Week Integration</strong> — SDK + pre-built UI components; minimal changes to existing smart contracts</div>
+        </div>
+
+        <div class="timeline">
+          <h3>Integration Pathway</h3>
+          <ol>
+            <li><strong>Week 1:</strong> SDK sandbox access + technical documentation review with your engineering team</li>
+            <li><strong>Week 2:</strong> PoC completion for one core use case (e.g., investor accreditation proof)</li>
+            <li><strong>Week 3:</strong> Testnet deployment + compliance officer walkthrough session</li>
+            <li><strong>Week 4:</strong> Mainnet integration + joint announcement (optional)</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <section class="partners">
+      <h2 class="section-title">Target Partners</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Platform</th>
+            <th>Vertical</th>
+            <th>Integration Point</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="company">Centrifuge</td><td class="vertical">Private Credit</td><td>Originator KYC + investor accreditation privacy</td></tr>
+          <tr><td class="company">Maple Finance</td><td class="vertical">Institutional Lending</td><td>Confidential loan terms + pool metrics privacy</td></tr>
+          <tr><td class="company">Goldfinch Prime</td><td class="vertical">Private Credit Funds</td><td>Accredited investor verification without PII exposure</td></tr>
+          <tr><td class="company">Ondo Finance</td><td class="vertical">Tokenized Treasuries</td><td>Institutional trader position confidentiality</td></tr>
+          <tr><td class="company">Midas</td><td class="vertical">Liquidity Layer</td><td>Redemption privacy + fund manager confidentiality</td></tr>
+          <tr><td class="company">Plume Network</td><td class="vertical">RWA L1</td><td>Native privacy standard for RWA ecosystem</td></tr>
+          <tr><td class="company">Brickken</td><td class="vertical">Real Estate</td><td>Investor anonymity + accredited verification</td></tr>
+          <tr><td class="company">RealT</td><td class="vertical">Fractional Real Estate</td><td>Retail investor data protection at scale</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="why-now">
+      <div class="reason">
+        <h3>Regulatory Pressure</h3>
+        <p>SEC, EU MiCA, and GDPR create conflicting demands. Veil provides selective disclosure — prove compliance without storing PII on-chain.</p>
+      </div>
+      <div class="reason">
+        <h3>Institutional Adoption</h3>
+        <p>BlackRock, Fidelity, and Apollo are entering RWA. They require privacy layers that meet enterprise security standards.</p>
+      </div>
+      <div class="reason">
+        <h3>First-Mover Window</h3>
+        <p>$24B+ tokenized RWA market growing 266% YoY. No dedicated privacy infrastructure exists yet — we're building the standard.</p>
+      </div>
+    </section>
+
+    <section class="cta">
+      <h2>Apply for Pilot Integration</h2>
+      <p>We are selecting 5 RWA platforms for our free 3-month pilot. Includes full technical support, compliance officer demos, and joint announcement upon mainnet launch.</p>
+      
+      <form class="form" action="https://formspree.io/f/your-form-id" method="POST">
+        <div class="form-group">
+          <label for="company">Company</label>
+          <input type="text" id="company" name="company" placeholder="Your company name" required>
+        </div>
+        <div class="form-group">
+          <label for="name">Full Name</label>
+          <input type="text" id="name" name="name" placeholder="Your name" required>
+        </div>
+        <div class="form-group">
+          <label for="email">Work Email</label>
+          <input type="email" id="email" name="email" placeholder="you@company.com" required>
+        </div>
+        <div class="form-group">
+          <label for="vertical">RWA Vertical</label>
+          <select id="vertical" name="vertical" required>
+            <option value="">Select...</option>
+            <option value="private-credit">Private Credit</option>
+            <option value="treasuries">Tokenized Treasuries</option>
+            <option value="real-estate">Real Estate</option>
+            <option value="commodities">Commodities</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="use-case">Primary Use Case</label>
+          <textarea id="use-case" name="use_case" rows="3" placeholder="Briefly describe your privacy needs..."></textarea>
+        </div>
+        <button type="submit" class="submit-btn">Submit Pilot Application</button>
+        <p class="form-footer">We'll respond within 24 hours. Confidential — NDA available.</p>
+      </form>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="contact">
+        <strong>Veil Protocol</strong><br>
+        <a href="mailto:carlosdelafiguera@gmail.com">carlosdelafiguera@gmail.com</a> | @carldlfr
+      </div>
+      <p>© 2026 Veil. All rights reserved.</p>
+    </div>
+  </footer>
+
+</body>
+</html>
